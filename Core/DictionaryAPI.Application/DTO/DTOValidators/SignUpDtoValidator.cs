@@ -22,7 +22,7 @@ namespace DictionaryAPI.Application.DTO.DTOValidators
             RuleFor(s => s.Password).Matches(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").WithMessage(Message.InvalidPasswordFormat);
 
             RuleFor(s => s.BirthDate).NotNull().WithMessage(Message.BirthDateNotNull);
-            RuleFor(s => s.Gender).NotNull().WithMessage(Message.GenderNotNull)
+            RuleFor(s => s.Gender).NotNull().WithMessage(Message.GenderNotNull);
         }
     }
 }
