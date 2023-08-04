@@ -31,7 +31,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Domain\\DictionaryAPI.Domain.csproj": {
+                "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Domain\\DictionaryAPI.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

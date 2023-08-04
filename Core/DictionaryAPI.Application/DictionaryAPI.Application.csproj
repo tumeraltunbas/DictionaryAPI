@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DictionaryAPI.Domain\DictionaryAPI.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
