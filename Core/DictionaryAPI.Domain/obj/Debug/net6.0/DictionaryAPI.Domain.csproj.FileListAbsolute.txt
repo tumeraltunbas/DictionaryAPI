@@ -1,0 +1,12 @@
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\bin\Debug\net6.0\DictionaryAPI.Domain.deps.json
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\bin\Debug\net6.0\DictionaryAPI.Domain.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\bin\Debug\net6.0\DictionaryAPI.Domain.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.csproj.AssemblyReference.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.AssemblyInfoInputs.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.AssemblyInfo.cs
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\refint\DictionaryAPI.Domain.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\DictionaryAPI.Domain.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Core\DictionaryAPI.Domain\obj\Debug\net6.0\ref\DictionaryAPI.Domain.dll
