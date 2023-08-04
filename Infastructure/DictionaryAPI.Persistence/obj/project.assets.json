@@ -1184,6 +1184,16 @@
           }
         }
       },
+      "DictionaryAPI.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/DictionaryAPI.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DictionaryAPI.Application.dll": {}
+        }
+      },
       "DictionaryAPI.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3235,6 +3245,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "DictionaryAPI.Application/1.0.0": {
+      "type": "project",
+      "path": "../../Core/DictionaryAPI.Application/DictionaryAPI.Application.csproj",
+      "msbuildProject": "../../Core/DictionaryAPI.Application/DictionaryAPI.Application.csproj"
+    },
     "DictionaryAPI.Domain/1.0.0": {
       "type": "project",
       "path": "../../Core/DictionaryAPI.Domain/DictionaryAPI.Domain.csproj",
@@ -3243,6 +3258,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "DictionaryAPI.Application >= 1.0.0",
       "DictionaryAPI.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.0-preview.6.23329.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0-preview.6.23329.4",
@@ -3284,6 +3300,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Application\\DictionaryAPI.Application.csproj": {
+              "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Application\\DictionaryAPI.Application.csproj"
+            },
             "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Domain\\DictionaryAPI.Domain.csproj": {
               "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Domain\\DictionaryAPI.Domain.csproj"
             }

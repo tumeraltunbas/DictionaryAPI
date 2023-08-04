@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PBXFsia1qO8ZHAyP280Njv+MBsaQIMZE6pny7MPs/LpM+QAT5roo/ETUzHHgRt62suMB9Y+0h/N4cJW9Cr6xzQ==",
+  "dgSpecHash": "LzU4DRf1v7e6nXvIhlBTm40HM07/ynUo2Q5HiJAs1gDf0luvb3pmWpoVFXdL9i/TOZVs8UghLN3Y18kfP/6wXQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Presentation\\DictionaryAPI.WebAPI\\DictionaryAPI.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0-preview.6.23329.7\\microsoft.extensions.configuration.8.0.0-preview.6.23329.7.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0-preview.6.23329.7\\microsoft.extensions.configuration.abstractions.8.0.0-preview.6.23329.7.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\8.0.0-preview.6.23329.7\\microsoft.extensions.configuration.fileextensions.8.0.0-preview.6.23329.7.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.configuration.json\\8.0.0-preview.6.23329.7\\microsoft.extensions.configuration.json.8.0.0-preview.6.23329.7.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0-preview.6.23329.7\\microsoft.extensions.dependencyinjection.8.0.0-preview.6.23329.7.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0-preview.6.23329.7\\microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.6.23329.7.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.0-preview.6.23329.7\\microsoft.extensions.dependencymodel.8.0.0-preview.6.23329.7.nupkg.sha512",

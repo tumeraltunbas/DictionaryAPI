@@ -89,3 +89,9 @@ C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\Dicti
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\DictionaryAPI.Persistence.dll
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\DictionaryAPI.Persistence.pdb
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\DictionaryAPI.Domain.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
