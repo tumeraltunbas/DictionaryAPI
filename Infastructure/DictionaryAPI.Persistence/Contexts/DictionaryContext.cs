@@ -14,6 +14,22 @@ namespace DictionaryAPI.Persistence.Contexts
 
         ConfigurationManager configurationManager = new();
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            //User - Entry one to many
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Entries) //User has many entries
+                .WithOne(e => e.User) //Entry has one User
+                .HasForeignKey(e => e.UserId);
+
+            //Title and Entry one to many
+            modelBuilder.Entity<Title>()
+                .HasMany(t => t.Entries)
+                .WithOne(e => e.Title)
+                .HasForeignKey(e => e.TitleId);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             configurationManager.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
