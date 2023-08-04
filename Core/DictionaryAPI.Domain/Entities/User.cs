@@ -26,6 +26,7 @@ namespace DictionaryAPI.Domain.Entities
         public DateTime? ResetPasswordTokenExpires { get; set; }
         public bool IsEmailVerified { get; set; } = false;
 
+        public ICollection<Entry> Entries { get; set; }
 
 
     }
