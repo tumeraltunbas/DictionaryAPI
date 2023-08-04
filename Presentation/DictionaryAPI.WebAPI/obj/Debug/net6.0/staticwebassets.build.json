@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "PgUovISp4ZpOoJk+KImuoUhvgqAWtyUNcJOLpMnCbLs=",
+  "Source": "DictionaryAPI.WebAPI",
+  "BasePath": "_content/DictionaryAPI.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
