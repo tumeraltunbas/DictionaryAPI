@@ -1,4 +1,5 @@
 ﻿using DictionaryAPI.Application.DTO.DTOs;
+using DictionaryAPI.Application.Utils.Result;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
 {
     public interface IUserService
     {
-        void SignUp(SignUpDto signUpDto);
+        Result SignUp(SignUpDto signUpDto);
     }
 }
