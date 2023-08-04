@@ -1,4 +1,4 @@
-﻿using DictionaryAPI.Application.DTOs;
+﻿using DictionaryAPI.Application.DTO.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

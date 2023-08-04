@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "jF/4uYUWR2o+UtQaZYBp9B5AeBsfXq8foE1Ko+YohmNlbHAwd9t/erDUTFvlHqSBMIeAjuiJvm58jDSioMH0EA==",
+  "dgSpecHash": "XMiYuUbvqjVeubvnAvu2s/rfQLJM95sRQknx9cCAAhfCpp+c+AzaP/KZs6VwE/AmHhcGaRaGZvpG7kB45yOIoA==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Persistence\\DictionaryAPI.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tumer\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

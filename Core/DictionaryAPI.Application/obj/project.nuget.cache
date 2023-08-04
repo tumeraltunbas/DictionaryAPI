@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "VojP8yeOADeRWUqP8Ub/BSIOB5HXCRUtuOaFZb4eWhkpqSeyLvl4uJenFqSCzX59X10Z2zWBEln/ORQSoU0xRA==",
+  "dgSpecHash": "J9StQjBPei28GMF+7QGiiMiNtzFhWT/X0vNhguYhO3EiHRu1WhbXATVkbcBuCg9eUVhzHkp3C4Ug8bpL6Sm2OA==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Application\\DictionaryAPI.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
