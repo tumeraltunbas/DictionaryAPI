@@ -1,0 +1,17 @@
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\bin\Debug\net6.0\DictionaryAPI.Persistence.deps.json
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\bin\Debug\net6.0\DictionaryAPI.Persistence.runtimeconfig.json
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\bin\Debug\net6.0\DictionaryAPI.Persistence.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\bin\Debug\net6.0\DictionaryAPI.Persistence.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\bin\Debug\net6.0\DictionaryAPI.Domain.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\bin\Debug\net6.0\DictionaryAPI.Domain.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.csproj.AssemblyReference.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.AssemblyInfoInputs.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.AssemblyInfo.cs
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.csproj.CopyComplete
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\refint\DictionaryAPI.Persistence.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\DictionaryAPI.Persistence.genruntimeconfig.cache
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Persistence\obj\Debug\net6.0\ref\DictionaryAPI.Persistence.dll
