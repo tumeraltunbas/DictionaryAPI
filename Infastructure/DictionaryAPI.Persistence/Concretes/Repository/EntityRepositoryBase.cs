@@ -1,4 +1,4 @@
-﻿using DictionaryAPI.Application.Abstracts;
+﻿using DictionaryAPI.Application.Abstracts.Repository;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using System;
@@ -8,10 +8,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DictionaryAPI.Persistence.Concretes
+namespace DictionaryAPI.Persistence.Concretes.Repository
 {
     public class EntityRepositoryBase<T> : IEntityRepositoryBase<T>
-        where T: BaseEntity, new()
+        where T : BaseEntity, new()
         //Generic Type must be instance of BaseEntity and can be created new instance of Generic Type with new()
     {
         public void Add(T entity)
