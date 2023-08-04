@@ -28,6 +28,13 @@ namespace DictionaryAPI.Domain.Entities
 
         public ICollection<Entry> Entries { get; set; }
 
+        public User(string username, string email, DateTime birthDate, Gender gender)
+        {
+            Username = username;
+            Email = email;
+            BirthDate = birthDate;
+            Gender = gender;
+        }
 
     }
 }
