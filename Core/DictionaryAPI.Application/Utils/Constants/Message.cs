@@ -15,5 +15,7 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string InvalidPasswordFormat = "Password must contain: Minimum eight characters, at least one letter and one number";
         public static string BirthDateNotNull = "Birth Date can not be null";
         public static string GenderNotNull = "Gender can not null";
+
+        public static string UserCreated = "User has been successfully created";
      }
 }
