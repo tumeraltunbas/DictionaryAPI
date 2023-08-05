@@ -12,12 +12,13 @@ namespace DictionaryAPI.Infastructure.Security.Hash
     {
         public Tuple<byte[], byte[]> GenerateHash(string password)
         {
-            HMACSHA256 algorithm = new();
+            using (HMACSHA256 algorithm = new())
+            {
+                byte[] salt = algorithm.Key;
+                byte[] hash = algorithm.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-            byte[] salt = algorithm.Key;
-            byte[] hash = algorithm.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-            return new Tuple<byte[], byte[]>(salt, hash);
+                return new Tuple<byte[], byte[]>(salt, hash);
+            }
 
         }
     }
