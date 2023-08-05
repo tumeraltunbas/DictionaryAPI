@@ -28,12 +28,14 @@ namespace DictionaryAPI.Domain.Entities
 
         public ICollection<Entry> Entries { get; set; }
 
-        public User(string username, string email, DateTime birthDate, Gender gender)
+        public User(string username, string email, DateTime birthDate, Gender gender, byte[] passwordSalt, byte[] passwordHash)
         {
             Username = username;
             Email = email;
             BirthDate = birthDate;
             Gender = gender;
+            PasswordSalt = passwordSalt;
+            PasswordHash = passwordHash;
         }
 
     }
