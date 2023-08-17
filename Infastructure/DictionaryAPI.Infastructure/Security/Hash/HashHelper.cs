@@ -21,5 +21,27 @@ namespace DictionaryAPI.Infastructure.Security.Hash
             }
 
         }
+
+        public bool VerifyPassword(byte[] passwordSalt, byte[] passwordHash, string password)
+        {
+            using (HMACSHA256 algorithm = new(passwordSalt))
+            {
+                byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
+                byte[] passwordAsHash = algorithm.ComputeHash(passwordAsBytes);
+
+                for (int i = 0; i < passwordHash.Length; i++)
+                {
+
+                    if (passwordHash[i] != passwordAsHash[i])
+                    {
+                        return false;
+                    }
+
+                }
+
+                return true;
+
+            }
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace DictionaryAPI.Application.Abstracts.Security.Hash
     public interface IHashHelper
     {
         Tuple<byte[], byte[]> GenerateHash(string password);
+        bool VerifyPassword(byte[] passwordSalt, byte[] passwordHash, string password);
     }
 }
