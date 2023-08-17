@@ -29,6 +29,18 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpPost("sign/in")]
+        public IActionResult SignIn(SignInDto signInDto)
+        {
+            var result = _userService.SignIn(signInDto);
+
+            if (result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
 
     }
 }

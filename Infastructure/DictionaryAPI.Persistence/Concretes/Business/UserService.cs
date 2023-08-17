@@ -1,6 +1,7 @@
 ﻿using DictionaryAPI.Application.Abstracts.Business;
 using DictionaryAPI.Application.Abstracts.DAL;
 using DictionaryAPI.Application.Abstracts.Security.Hash;
+using DictionaryAPI.Application.Abstracts.Security.JWT;
 using DictionaryAPI.Application.Abstracts.Services.EmailService;
 using DictionaryAPI.Application.DTO.DTOs;
 using DictionaryAPI.Application.DTO.DTOValidators;
@@ -8,6 +9,7 @@ using DictionaryAPI.Application.Utils;
 using DictionaryAPI.Application.Utils.Constants;
 using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
+using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -28,13 +30,17 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         IConfiguration _configuration;
         IUtilService _utilService;
         IEmailService _emailService;
-        public UserService(IHashHelper hashHelper, IUserDal userDal, IConfiguration configuration, IUtilService utilService, IEmailService emailService)
+        IJwtHelper _jwtHelper;
+        DictionaryContext _context;
+        public UserService(IHashHelper hashHelper, IUserDal userDal, IConfiguration configuration, IUtilService utilService, IEmailService emailService, IJwtHelper jwtHelper, DictionaryContext context)
         {
             _hashHelper = hashHelper;
             _userDal = userDal;
             _configuration = configuration;
             _utilService = utilService;
             _emailService = emailService;
+            _jwtHelper = jwtHelper;
+            _context = context;
         }
 
         public Result SignUp(SignUpDto signUpDto)
@@ -70,8 +76,43 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _emailService.SendEmailVerificationLink(user);
 
             //JWT will be returned
-            return new SuccessResult(Message.UserCreated);
+            return new SuccessDataResult<string>(Message.UserCreated, _jwtHelper.GenerateJwt(user));
 
         }
+        public Result SignIn(SignInDto signInDto)
+        {
+            SignInDtoValidator signInValidator = new();
+            ValidationResult result = signInValidator.Validate(signInDto);
+
+            if(result.IsValid == false)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.Email == signInDto.Email);
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            bool verifyPassword = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, signInDto.Password);
+
+            if (!verifyPassword)
+            {
+                return new ErrorResult(Message.InvalidCredentials);
+            }
+
+            //if(user.IsVisible == false)
+            //{
+            //    user.IsVisible = true;
+
+            //    _context.Update(user);
+            //    _context.SaveChanges();
+            //}
+
+            return new SuccessDataResult<string>(_jwtHelper.GenerateJwt(user));
+        }
+
     }
 }

@@ -11,5 +11,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
     public interface IUserService
     {
         Result SignUp(SignUpDto signUpDto);
+        Result SignIn(SignInDto signInDto);
     }
 }
