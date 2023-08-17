@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace DictionaryAPI.Persistence.Concretes.Repository
 {
     public class EntityRepositoryBase<T> : IEntityRepositoryBase<T>
-        where T : BaseEntity, new()
+        where T : BaseEntity
         //Generic Type must be instance of BaseEntity and can be created new instance of Generic Type with new()
     {
         public void Add(T entity)
