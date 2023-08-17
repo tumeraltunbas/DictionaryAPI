@@ -1334,6 +1334,19 @@
           "bin/placeholder/DictionaryAPI.Domain.dll": {}
         }
       },
+      "DictionaryAPI.Infastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DictionaryAPI.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DictionaryAPI.Infastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DictionaryAPI.Infastructure.dll": {}
+        }
+      },
       "DictionaryAPI.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3563,6 +3576,11 @@
       "path": "../../Core/DictionaryAPI.Domain/DictionaryAPI.Domain.csproj",
       "msbuildProject": "../../Core/DictionaryAPI.Domain/DictionaryAPI.Domain.csproj"
     },
+    "DictionaryAPI.Infastructure/1.0.0": {
+      "type": "project",
+      "path": "../../Infastructure/DictionaryAPI.Infastructure/DictionaryAPI.Infastructure.csproj",
+      "msbuildProject": "../../Infastructure/DictionaryAPI.Infastructure/DictionaryAPI.Infastructure.csproj"
+    },
     "DictionaryAPI.Persistence/1.0.0": {
       "type": "project",
       "path": "../../Infastructure/DictionaryAPI.Persistence/DictionaryAPI.Persistence.csproj",
@@ -3571,6 +3589,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "DictionaryAPI.Infastructure >= 1.0.0",
       "DictionaryAPI.Persistence >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0-preview.6.23329.4",
       "Swashbuckle.AspNetCore >= 6.2.3"
@@ -3609,6 +3628,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Infastructure\\DictionaryAPI.Infastructure.csproj": {
+              "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Infastructure\\DictionaryAPI.Infastructure.csproj"
+            },
             "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Persistence\\DictionaryAPI.Persistence.csproj": {
               "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Persistence\\DictionaryAPI.Persistence.csproj"
             }

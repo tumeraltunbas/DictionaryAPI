@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infastructure\DictionaryAPI.Infastructure\DictionaryAPI.Infastructure.csproj" />
     <ProjectReference Include="..\..\Infastructure\DictionaryAPI.Persistence\DictionaryAPI.Persistence.csproj" />
   </ItemGroup>
 

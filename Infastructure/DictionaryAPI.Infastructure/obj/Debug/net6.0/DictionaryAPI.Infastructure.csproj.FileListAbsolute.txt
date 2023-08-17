@@ -10,3 +10,8 @@ C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\Dict
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\obj\Debug\net6.0\refint\DictionaryAPI.Infastructure.dll
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\obj\Debug\net6.0\DictionaryAPI.Infastructure.pdb
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\obj\Debug\net6.0\ref\DictionaryAPI.Infastructure.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Application.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Domain.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Application.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Domain.pdb
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\obj\Debug\net6.0\DictionaryAPI.Infastructure.csproj.CopyComplete
