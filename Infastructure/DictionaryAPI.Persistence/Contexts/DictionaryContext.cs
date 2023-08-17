@@ -28,6 +28,17 @@ namespace DictionaryAPI.Persistence.Contexts
                 .HasMany(t => t.Entries)
                 .WithOne(e => e.Title)
                 .HasForeignKey(e => e.TitleId);
+
+
+            //User.Username Unique
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
+
+            //User.Email Unique
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
