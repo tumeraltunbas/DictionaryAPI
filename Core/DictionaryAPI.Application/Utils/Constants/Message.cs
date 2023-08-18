@@ -23,5 +23,6 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string UserCreated = "User has been successfully created";
         public static string UserNotFound = "User not found";
         public static string InvalidCredentials = "Invalid credentials";
+        public static string EmailVerificationLinkSent = "Email verification link has been successfully sent";
     }
 }

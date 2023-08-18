@@ -114,5 +114,28 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessDataResult<string>(_jwtHelper.GenerateJwt(user));
         }
 
+        public Result SendEmailVerificationLink(SendEmailVerificationLinkDto sendEmailVerificationLinkDto)
+        {
+
+            SendEmailVerificationLinkDtoValidator validator = new();
+            ValidationResult result = validator.Validate(sendEmailVerificationLinkDto);
+
+            if (!result.IsValid)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+
+            User user = _context.Users.FirstOrDefault(u => u.Email == sendEmailVerificationLinkDto.Email);
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            _emailService.SendEmailVerificationLink(user);
+
+            return new SuccessResult(Message.EmailVerificationLinkSent);
+        }
     }
 }

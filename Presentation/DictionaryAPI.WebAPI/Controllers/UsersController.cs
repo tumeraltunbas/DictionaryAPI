@@ -17,7 +17,7 @@ namespace DictionaryAPI.WebAPI.Controllers
         }
 
         [HttpPost("sign/up")]
-        public IActionResult SignUp(SignUpDto signUpDto)
+        public IActionResult SignUp([FromBody] SignUpDto signUpDto)
         {
             var result = _userService.SignUp(signUpDto);
             
@@ -30,11 +30,24 @@ namespace DictionaryAPI.WebAPI.Controllers
         }
 
         [HttpPost("sign/in")]
-        public IActionResult SignIn(SignInDto signInDto)
+        public IActionResult SignIn([FromBody] SignInDto signInDto)
         {
             var result = _userService.SignIn(signInDto);
 
             if (result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPost("/email/verification/send")]
+        public IActionResult SendEmailVerificationLink([FromBody] SendEmailVerificationLinkDto sendEmailVerificationLinkDto)
+        {
+            var result = _userService.SendEmailVerificationLink(sendEmailVerificationLinkDto);
+            
+            if(result.Success != true)
             {
                 return BadRequest(result);
             }
