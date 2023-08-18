@@ -27,5 +27,6 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string EmailVerificationTokenNull = "Email verification token can not be null";
         public static string EmailVerificatioTokenExpired = "Email verification token expired";
         public static string EmailVerified = "Email has been successfully verified";
+        public static string ResetPasswordLinkSent = "Reset password link has been successfully sent";
     }
 }

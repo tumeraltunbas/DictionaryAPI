@@ -167,5 +167,27 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.EmailVerified);
         }
+
+        public Result ForgotPassword(ForgotPasswordDto forgotPasswordDto)
+        {
+            ForgotPasswordDtoValidator validator = new();
+            ValidationResult result = validator.Validate(forgotPasswordDto);
+
+            if(result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.Email == forgotPasswordDto.Email);
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            _emailService.SendResetPasswordLink(user);
+
+            return new SuccessResult(Message.ResetPasswordLinkSent);
+        }
     }
 }

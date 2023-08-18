@@ -67,5 +67,18 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("/password/forgot")]
+        public IActionResult ForgotPassword(ForgotPasswordDto forgotPasswordDto)
+        {
+            var result = _userService.ForgotPassword(forgotPasswordDto);
+            
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }
