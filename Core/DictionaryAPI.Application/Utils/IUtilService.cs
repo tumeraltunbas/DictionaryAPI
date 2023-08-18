@@ -10,5 +10,6 @@ namespace DictionaryAPI.Application.Utils
     {
         string GenerateRandomString(int size);
         string GenerateEmailVerificationLink(string emailVerificationLink);
+        string GenerateResetPasswordLink(string resetPasswordToken);
     }
 }

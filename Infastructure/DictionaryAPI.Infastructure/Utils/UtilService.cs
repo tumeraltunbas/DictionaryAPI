@@ -41,5 +41,11 @@ namespace DictionaryAPI.Infastructure.Utils
             return $"{domain}/api/email/verification/verify?emailVerificationToken={emailVerificationToken}";
         }
 
+        public string GenerateResetPasswordLink(string resetPasswordToken)
+        {
+            string domain = _configuration.GetValue<string>("DevDomain");
+
+            return $"{domain}/api/password/reset?resetPasswordToken={resetPasswordToken}";
+        }
     }
 }
