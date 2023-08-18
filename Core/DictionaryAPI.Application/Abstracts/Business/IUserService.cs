@@ -13,5 +13,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result SignUp(SignUpDto signUpDto);
         Result SignIn(SignInDto signInDto);
         Result SendEmailVerificationLink(SendEmailVerificationLinkDto sendEmailVerificationLinkDto);
+        Result VerifyEmail(string url);
     }
 }

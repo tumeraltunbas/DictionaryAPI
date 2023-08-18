@@ -1,9 +1,12 @@
-﻿using DictionaryAPI.Application.Abstracts.Services.EmailService;
+﻿using DictionaryAPI.Application.Abstracts.Business;
+using DictionaryAPI.Application.Abstracts.DAL;
+using DictionaryAPI.Application.Abstracts.Services.EmailService;
 using DictionaryAPI.Application.DTO.DTOs;
 using DictionaryAPI.Application.DTO.DTOValidators;
 using DictionaryAPI.Application.Utils;
 using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
+using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.Configuration;
@@ -16,10 +19,14 @@ namespace DictionaryAPI.Infastructure.Services.EmailService
     {
         readonly IConfiguration _configuration;
         readonly IUtilService _utilService;
-        public EmailService(IConfiguration configuration, IUtilService utilService)
+        //readonly DictionaryContext _context;
+        IUserDal _userDal;
+        public EmailService(IConfiguration configuration, IUtilService utilService, IUserDal userDal)
         {
             _configuration = configuration;
             _utilService = utilService;
+            //_context = context;
+            _userDal = userDal;
         }
 
         public void SendMail(List<string> recipients, string? subject, string body)
@@ -51,9 +58,16 @@ namespace DictionaryAPI.Infastructure.Services.EmailService
 
         public void SendEmailVerificationLink(User user)
         {
-            string link = _utilService.GenerateEmailVerificationLink();
+            string token = _utilService.GenerateRandomString(25);
+            string link = _utilService.GenerateEmailVerificationLink(token);
 
             int emailVerificationTokenExpiresInMinutes = _configuration.GetValue<int>("EmailVerificationTokenExpiresInMinutes");
+
+            user.EmailVerificationToken = token;
+            user.EmailVerificationTokenExpires = DateTime.UtcNow.AddMinutes(emailVerificationTokenExpiresInMinutes);
+
+            //_context.Users.Update(user);
+            _userDal.Update(user);
 
             SendMail(
                 recipients: new List<string>() { user.Email },

@@ -1,4 +1,5 @@
-﻿using DictionaryAPI.Application.Abstracts.Business;
+﻿using Azure.Core;
+using DictionaryAPI.Application.Abstracts.Business;
 using DictionaryAPI.Application.Abstracts.DAL;
 using DictionaryAPI.Application.Abstracts.Security.Hash;
 using DictionaryAPI.Application.Abstracts.Security.JWT;
@@ -17,6 +18,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Net.Mail;
+using System.Net.WebSockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,6 +138,34 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _emailService.SendEmailVerificationLink(user);
 
             return new SuccessResult(Message.EmailVerificationLinkSent);
+        }
+
+        public Result VerifyEmail(string emailVerificationToken)
+        {
+
+            if(emailVerificationToken == null)
+            {
+                return new ErrorResult(Message.EmailVerificationTokenNull);
+            }
+
+            User user = _context.Users.SingleOrDefault(u => u.EmailVerificationToken == emailVerificationToken);
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            if (DateTime.UtcNow > user.EmailVerificationTokenExpires)
+            {
+                return new ErrorResult(Message.EmailVerificatioTokenExpired);
+            }
+
+            user.EmailVerificationToken = "";
+            user.EmailVerificationTokenExpires = DateTime.UtcNow;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.EmailVerified);
         }
     }
 }

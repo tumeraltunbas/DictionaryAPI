@@ -1358,6 +1358,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "DictionaryAPI.Application": "1.0.0",
+          "DictionaryAPI.Persistence": "1.0.0",
           "Microsoft.IdentityModel.Tokens": "6.24.0",
           "System.IdentityModel.Tokens.Jwt": "6.24.0"
         },

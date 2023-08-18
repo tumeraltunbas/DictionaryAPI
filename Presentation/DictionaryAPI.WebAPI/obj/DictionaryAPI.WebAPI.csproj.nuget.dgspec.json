@@ -166,6 +166,9 @@
             "projectReferences": {
               "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Application\\DictionaryAPI.Application.csproj": {
                 "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Application\\DictionaryAPI.Application.csproj"
+              },
+              "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Persistence\\DictionaryAPI.Persistence.csproj": {
+                "projectPath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Persistence\\DictionaryAPI.Persistence.csproj"
               }
             }
           }

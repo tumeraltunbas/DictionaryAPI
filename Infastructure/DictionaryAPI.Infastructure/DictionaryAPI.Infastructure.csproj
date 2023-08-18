@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\DictionaryAPI.Application\DictionaryAPI.Application.csproj" />
+    <ProjectReference Include="..\DictionaryAPI.Persistence\DictionaryAPI.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

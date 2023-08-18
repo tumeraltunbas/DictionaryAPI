@@ -15,3 +15,5 @@ C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\Dict
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Application.pdb
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Domain.pdb
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\obj\Debug\net6.0\DictionaryAPI.Infastructure.csproj.CopyComplete
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Persistence.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Infastructure\DictionaryAPI.Infastructure\bin\Debug\net6.0\DictionaryAPI.Persistence.pdb

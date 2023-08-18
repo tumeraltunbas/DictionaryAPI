@@ -55,5 +55,17 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("/email/verification/verify")]
+        public IActionResult VerifyEmail([FromQuery] string emailVerificationToken)
+        {
+            var result = _userService.VerifyEmail(emailVerificationToken);
+            
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

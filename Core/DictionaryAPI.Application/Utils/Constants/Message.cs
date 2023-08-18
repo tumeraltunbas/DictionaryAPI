@@ -24,5 +24,8 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string UserNotFound = "User not found";
         public static string InvalidCredentials = "Invalid credentials";
         public static string EmailVerificationLinkSent = "Email verification link has been successfully sent";
+        public static string EmailVerificationTokenNull = "Email verification token can not be null";
+        public static string EmailVerificatioTokenExpired = "Email verification token expired";
+        public static string EmailVerified = "Email has been successfully verified";
     }
 }
