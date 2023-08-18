@@ -76,5 +76,25 @@ namespace DictionaryAPI.Infastructure.Services.EmailService
             );
                 
         }
+
+        public void SendResetPasswordLink(User user)
+        {
+            string token = _utilService.GenerateRandomString(30);
+            string link = _utilService.GenerateResetPasswordLink(token);
+
+            int resetPasswordExpiresInMinutes = _configuration.GetValue<int>("ResetPasswordTokenExpiresInMinutes");
+
+            user.ResetPasswordToken = token;
+            user.ResetPasswordTokenExpires = DateTime.UtcNow.AddMinutes(resetPasswordExpiresInMinutes);
+
+            _userDal.Update(user);
+
+            SendMail(
+                recipients: new List<string>() { user.Email },
+                subject: "Reset Password Link",
+                body: $"Dear {user.Username}, your reset password link is {link}. This link is valid for {resetPasswordExpiresInMinutes} minutes"
+            );
+
+        }
     }
 }

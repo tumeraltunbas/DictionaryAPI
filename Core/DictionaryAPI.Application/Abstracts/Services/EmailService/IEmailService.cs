@@ -13,5 +13,6 @@ namespace DictionaryAPI.Application.Abstracts.Services.EmailService
     {
         void SendMail(List<string> recipients, string? subject, string body);
         void SendEmailVerificationLink(User user);
+        void SendResetPasswordLink(User user);
     }
 }
