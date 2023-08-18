@@ -15,5 +15,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result SendEmailVerificationLink(SendEmailVerificationLinkDto sendEmailVerificationLinkDto);
         Result VerifyEmail(string url);
         Result ForgotPassword(ForgotPasswordDto forgotPasswordDto);
+        Result ResetPassword(ResetPasswordDto resetPasswordDto, string resetPasswordToken);
     }
 }

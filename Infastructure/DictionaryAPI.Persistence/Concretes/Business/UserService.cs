@@ -12,6 +12,7 @@ using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -188,6 +189,47 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _emailService.SendResetPasswordLink(user);
 
             return new SuccessResult(Message.ResetPasswordLinkSent);
+        }
+
+        public Result ResetPassword(ResetPasswordDto resetPasswordDto, string resetPasswordToken)
+        {
+            ResetPasswordDtoValidator validator = new();
+            ValidationResult result = validator.Validate(resetPasswordDto);
+
+            if(result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            if(resetPasswordToken == null)
+            {
+                return new ErrorResult(Message.ResetPasswordTokenNull);
+            }
+
+            User user = _context.Users.SingleOrDefault(u => u.ResetPasswordToken == resetPasswordToken);
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            if(resetPasswordDto.Password != resetPasswordDto.PasswordRepeat)
+            {
+                return new ErrorResult(Message.PasswordsDoNotMatch);
+            }
+
+
+            Tuple<byte[], byte[]> hash = _hashHelper.GenerateHash(resetPasswordDto.Password);
+            
+            user.ResetPasswordToken = "";
+            user.ResetPasswordTokenExpires = DateTime.UtcNow;
+
+            user.PasswordSalt = hash.Item1;
+            user.PasswordHash = hash.Item2;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.PasswordChanged);
         }
     }
 }

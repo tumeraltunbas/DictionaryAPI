@@ -42,7 +42,7 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("/email/verification/send")]
+        [HttpPost("email/verification/send")]
         public IActionResult SendEmailVerificationLink([FromBody] SendEmailVerificationLinkDto sendEmailVerificationLinkDto)
         {
             var result = _userService.SendEmailVerificationLink(sendEmailVerificationLinkDto);
@@ -55,7 +55,7 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("/email/verification/verify")]
+        [HttpGet("email/verification/verify")]
         public IActionResult VerifyEmail([FromQuery] string emailVerificationToken)
         {
             var result = _userService.VerifyEmail(emailVerificationToken);
@@ -68,11 +68,24 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("/password/forgot")]
+        [HttpPost("password/forgot")]
         public IActionResult ForgotPassword(ForgotPasswordDto forgotPasswordDto)
         {
             var result = _userService.ForgotPassword(forgotPasswordDto);
             
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPut("password/reset")]
+        public IActionResult ResetPassword([FromBody] ResetPasswordDto resetPasswordDto, [FromQuery] string resetPasswordToken)
+        {
+            var result = _userService.ResetPassword(resetPasswordDto, resetPasswordToken);
+
             if(result.Success != true)
             {
                 return BadRequest(result);
