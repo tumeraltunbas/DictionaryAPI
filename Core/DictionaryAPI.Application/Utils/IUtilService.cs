@@ -9,6 +9,6 @@ namespace DictionaryAPI.Application.Utils
     public interface IUtilService
     {
         string GenerateRandomString(int size);
-        string GenerateEmailVerificationLink();
+        string GenerateEmailVerificationLink(string emailVerificationLink);
     }
 }

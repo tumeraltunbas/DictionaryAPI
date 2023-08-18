@@ -34,12 +34,11 @@ namespace DictionaryAPI.Infastructure.Utils
             return sb.ToString();
 
         }
-        public string GenerateEmailVerificationLink()
+        public string GenerateEmailVerificationLink(string emailVerificationToken)
         {
             string domain = _configuration.GetValue<string>("DevDomain");
-            string token = GenerateRandomString(25);
 
-            return $"{domain}/api/email/verification/verify?emailVerificationToken={token}";
+            return $"{domain}/api/email/verification/verify?emailVerificationToken={emailVerificationToken}";
         }
 
     }
