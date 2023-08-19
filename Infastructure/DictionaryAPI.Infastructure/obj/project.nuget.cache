@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "h+QSWaKBK2HRKyRt2YViPrbSsLU37Y4mquugR1oQj2rq1NnulEX32wB1M/M4j2dNcCrPilR1lwdqHwEvQHyYqQ==",
+  "dgSpecHash": "2AhVWgflksWB/hLl8B40ze7j1icRNHHI8xczgF/BbPWFWgqKNNb/RdHYL3FqBau9jeyxGSHTE1MZxuVd1cU0CQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Infastructure\\DictionaryAPI.Infastructure.csproj",
   "expectedPackageFiles": [
@@ -45,12 +45,13 @@
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\slugify.core\\5.0.0-prerelease.4\\slugify.core.5.0.0-prerelease.4.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.24.0\\system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512",
-    "C:\\Users\\tumer\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",

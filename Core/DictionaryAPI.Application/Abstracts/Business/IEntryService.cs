@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DictionaryAPI.Application.DTO.DTOs.EntryDTOs;
+using DictionaryAPI.Application.Utils.Result;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
 {
     public interface IEntryService
     {
+        Result CreateEntry(CreateEntryDto createEntryDto, IDictionary<object, object> items, string titleSlug);
     }
 }

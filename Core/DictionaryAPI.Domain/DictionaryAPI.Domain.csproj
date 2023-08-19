@@ -12,4 +12,8 @@
     <None Remove="Entities\Common\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Slugify.Core" Version="5.0.0-prerelease.4" />
+  </ItemGroup>
+
 </Project>

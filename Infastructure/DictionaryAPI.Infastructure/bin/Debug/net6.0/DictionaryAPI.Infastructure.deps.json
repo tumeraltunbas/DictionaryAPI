@@ -39,7 +39,7 @@
           "Azure.Core": "1.25.0",
           "Microsoft.Identity.Client": "4.47.2",
           "Microsoft.Identity.Client.Extensions.Msal": "2.19.3",
-          "System.Memory": "4.5.4",
+          "System.Memory": "4.5.5",
           "System.Security.Cryptography.ProtectedData": "6.0.0",
           "System.Text.Json": "8.0.0-preview.6.23329.7",
           "System.Threading.Tasks.Extensions": "4.5.4"
@@ -495,6 +495,18 @@
           }
         }
       },
+      "Slugify.Core/5.0.0-prerelease.4": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Slugify.Core.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
       "System.Configuration.ConfigurationManager/6.0.1": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "6.0.0",
@@ -550,7 +562,7 @@
           }
         }
       },
-      "System.Memory/4.5.4": {},
+      "System.Memory/4.5.5": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
           "System.Text.Encodings.Web": "8.0.0-preview.6.23329.7",
@@ -699,6 +711,9 @@
         }
       },
       "DictionaryAPI.Domain/1.0.0": {
+        "dependencies": {
+          "Slugify.Core": "5.0.0-prerelease.4"
+        },
         "runtime": {
           "DictionaryAPI.Domain.dll": {}
         }
@@ -1012,6 +1027,13 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
+    "Slugify.Core/5.0.0-prerelease.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oF8vLpwN7JrT4269fygItTnf2Swes71cqeEvdX+hZYLUFyMkWCq61LDIGDqzSdu110syqKGFD1d3zY23SggAnQ==",
+      "path": "slugify.core/5.0.0-prerelease.4",
+      "hashPath": "slugify.core.5.0.0-prerelease.4.nupkg.sha512"
+    },
     "System.Configuration.ConfigurationManager/6.0.1": {
       "type": "package",
       "serviceable": true,
@@ -1047,12 +1069,12 @@
       "path": "system.identitymodel.tokens.jwt/6.24.0",
       "hashPath": "system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512"
     },
-    "System.Memory/4.5.4": {
+    "System.Memory/4.5.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
-      "path": "system.memory/4.5.4",
-      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
     },
     "System.Memory.Data/1.0.2": {
       "type": "package",

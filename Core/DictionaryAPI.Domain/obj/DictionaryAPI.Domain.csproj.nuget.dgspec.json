@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Slugify.Core": {
+              "target": "Package",
+              "version": "[5.0.0-prerelease.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

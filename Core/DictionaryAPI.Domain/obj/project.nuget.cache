@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "yTHQzI8np5HBjEOl2YOvaLlRiIWWXOsKdtcIwkbhGXi13DtQhiovNAmrcFaSHPYN8F4yO/fMLsXImYKTOdfHVg==",
+  "dgSpecHash": "KL+F5yqE0fdyqe02v6vQn0N3HpuaoBP2u/eFWQAf2t0xtiSUE7LbYul3wjC2sMBmJkhgEiIXdwvFjZEigoLE0w==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Core\\DictionaryAPI.Domain\\DictionaryAPI.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\tumer\\.nuget\\packages\\slugify.core\\5.0.0-prerelease.4\\slugify.core.5.0.0-prerelease.4.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

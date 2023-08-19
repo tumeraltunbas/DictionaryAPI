@@ -32,5 +32,7 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string PasswordChanged = "Password has been successfully changed";
         public static string ResetPasswordTokenNull = "Reset password token can not be null";
         public static string AccountDeactivated = "Account has been successfully deactivated";
+        public static string ContentNotNull = "Content can not be null";
+        public static string EntryCreated = "Entry has been successfully created";
     }
 }

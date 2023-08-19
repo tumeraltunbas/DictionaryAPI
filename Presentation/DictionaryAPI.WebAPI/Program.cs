@@ -32,6 +32,11 @@ builder.Services.AddSingleton<IHashHelper, HashHelper>();
 builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddSingleton<DictionaryContext, DictionaryContext>();
 builder.Services.AddSingleton<IJwtHelper, JwtHelper>();
+builder.Services.AddSingleton<ITitleDal, TitleDal>();
+builder.Services.AddSingleton<ITitleService, TitleService>();
+builder.Services.AddSingleton<IEntryDal, EntryDal>();
+builder.Services.AddSingleton<IEntryService, EntryService>();
+
 
 //JWT validation configuration. From Microsoft.AspNetCore.AuthenticationJwtBearer
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

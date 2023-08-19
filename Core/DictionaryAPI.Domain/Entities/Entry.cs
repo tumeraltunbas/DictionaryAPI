@@ -13,5 +13,12 @@ namespace DictionaryAPI.Domain.Entities
         public Guid TitleId { get; set; }
         public User User { get; set; }
         public Title Title { get; set; }
+
+        public Entry(string content, Guid userId, Guid titleId)
+        {
+            Content = content;
+            UserId = userId;
+            TitleId = titleId;
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace DictionaryAPI.Application.Abstracts.DAL
 {
     public interface ITitleDal : IEntityRepositoryBase<Title>
     {
+        Title GetBySlug(string slug);
     }
 }
