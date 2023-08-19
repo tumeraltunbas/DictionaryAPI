@@ -12,6 +12,8 @@ using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -223,6 +225,40 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             
             user.ResetPasswordToken = "";
             user.ResetPasswordTokenExpires = DateTime.UtcNow;
+
+            user.PasswordSalt = hash.Item1;
+            user.PasswordHash = hash.Item2;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.PasswordChanged);
+        }
+
+        public Result PasswordChange(PasswordChangeDto passwordChangeDto, IDictionary<object, object> items)
+        {
+            PasswordChangeDtoValidator validator = new();
+            ValidationResult result = validator.Validate(passwordChangeDto);
+
+            if(result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            if (passwordChangeDto.NewPassword != passwordChangeDto.NewPasswordRepeat)
+            {
+                return new ErrorResult(Message.PasswordsDoNotMatch);
+            }
+
+            User user = _userDal.GetById(Guid.Parse(Convert.ToString(items["Id"])));
+
+            bool verify = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, passwordChangeDto.OldPassword);
+
+            if (verify != true)
+            {
+                return new ErrorResult(Message.InvalidCredentials);
+            }
+
+            Tuple<byte[], byte[]> hash = _hashHelper.GenerateHash(passwordChangeDto.NewPassword);
 
             user.PasswordSalt = hash.Item1;
             user.PasswordHash = hash.Item2;

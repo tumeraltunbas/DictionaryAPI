@@ -1,7 +1,11 @@
 ﻿using DictionaryAPI.Application.Abstracts.Business;
 using DictionaryAPI.Application.DTO.DTOs;
+using DictionaryAPI.Infastructure.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using DictionaryAPI.WebAPI.CustomAttributes;
 
 namespace DictionaryAPI.WebAPI.Controllers
 {
@@ -85,6 +89,21 @@ namespace DictionaryAPI.WebAPI.Controllers
         public IActionResult ResetPassword([FromBody] ResetPasswordDto resetPasswordDto, [FromQuery] string resetPasswordToken)
         {
             var result = _userService.ResetPassword(resetPasswordDto, resetPasswordToken);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPut("password/change")]
+        public IActionResult PasswordChange(PasswordChangeDto passwordChangeDto)
+        {
+            var result = _userService.PasswordChange(passwordChangeDto, HttpContext.Items);
 
             if(result.Success != true)
             {
