@@ -39,6 +39,11 @@ namespace DictionaryAPI.Persistence.Contexts
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            //Title.slug Unique
+            modelBuilder.Entity<Title>()
+                .HasIndex(t => t.Slug)
+                .IsUnique();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
