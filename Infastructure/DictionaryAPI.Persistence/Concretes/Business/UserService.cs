@@ -165,6 +165,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             user.EmailVerificationToken = "";
             user.EmailVerificationTokenExpires = DateTime.UtcNow;
+            user.IsEmailVerified = true;
 
             _userDal.Update(user);
 
