@@ -12,19 +12,7 @@ using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Net.Mail;
-using System.Net.WebSockets;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DictionaryAPI.Persistence.Concretes.Business
 {
@@ -108,13 +96,11 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 return new ErrorResult(Message.InvalidCredentials);
             }
 
-            //if(user.IsVisible == false)
-            //{
-            //    user.IsVisible = true;
-
-            //    _context.Update(user);
-            //    _context.SaveChanges();
-            //}
+            if(user.IsVisible == false)
+            {
+                user.IsVisible = true;
+                _userDal.Update(user);
+            }
 
             return new SuccessDataResult<string>(_jwtHelper.GenerateJwt(user));
         }
