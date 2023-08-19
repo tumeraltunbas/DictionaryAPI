@@ -112,5 +112,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPut("account/deactivate")]
+        public IActionResult DeactivateAccount(DeactivateAccountDto deactivateAccountDto)
+        {
+            var result = _userService.DeactiveAccount(deactivateAccountDto, HttpContext.Items);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

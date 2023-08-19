@@ -267,5 +267,31 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.PasswordChanged);
         }
+
+        public Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto, IDictionary<object, object> items)
+        {
+
+            DeactivateAccountDtoValidator validator = new();
+            ValidationResult result = validator.Validate(deactiveAccountDto);
+
+            if (result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            User user = _userDal.GetById(Guid.Parse(Convert.ToString(items["Id"])));
+
+            bool verify = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, deactiveAccountDto.Password);
+
+            if(verify != true)
+            {
+                return new ErrorResult(Message.InvalidCredentials);
+            }
+
+            user.IsVisible = false;
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.AccountDeactivated);
+        }
     }
 }

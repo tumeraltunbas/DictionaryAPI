@@ -17,5 +17,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result ForgotPassword(ForgotPasswordDto forgotPasswordDto);
         Result ResetPassword(ResetPasswordDto resetPasswordDto, string resetPasswordToken);
         Result PasswordChange(PasswordChangeDto passwordChangeDto, IDictionary<object, object> items);
+        Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto, IDictionary<object, object> items);
     }
 }
