@@ -1,11 +1,11 @@
 ﻿using DictionaryAPI.Application.Abstracts.Business;
-using DictionaryAPI.Application.DTO.DTOs;
 using DictionaryAPI.Infastructure.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using DictionaryAPI.WebAPI.CustomAttributes;
+using DictionaryAPI.Application.DTO.DTOs.UserDTOs;
 
 namespace DictionaryAPI.WebAPI.Controllers
 {

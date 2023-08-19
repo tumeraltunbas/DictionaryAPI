@@ -1,4 +1,4 @@
-﻿using DictionaryAPI.Application.DTO.DTOs;
+﻿using DictionaryAPI.Application.DTO.DTOs.UserDTOs;
 using DictionaryAPI.Application.Utils.Constants;
 using FluentValidation;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DictionaryAPI.Application.DTO.DTOValidators
+namespace DictionaryAPI.Application.DTO.DTOValidators.UserDTOValidators
 {
     public class PasswordChangeDtoValidator : AbstractValidator<PasswordChangeDto>
     {

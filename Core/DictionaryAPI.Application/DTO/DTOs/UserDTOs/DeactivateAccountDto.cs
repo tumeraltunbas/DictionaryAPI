@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DictionaryAPI.Application.DTO.DTOs
+namespace DictionaryAPI.Application.DTO.DTOs.UserDTOs
 {
-    public class ResetPasswordDto
+    public class DeactivateAccountDto
     {
         public string Password { get; set; }
-        public string PasswordRepeat { get; set; }
     }
 }

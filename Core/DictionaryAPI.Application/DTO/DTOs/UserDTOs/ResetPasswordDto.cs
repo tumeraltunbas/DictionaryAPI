@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DictionaryAPI.Application.DTO.DTOs
+namespace DictionaryAPI.Application.DTO.DTOs.UserDTOs
 {
-    public class SignInDto
+    public class ResetPasswordDto
     {
-        public string Email { get; set; }
         public string Password { get; set; }
+        public string PasswordRepeat { get; set; }
     }
 }
