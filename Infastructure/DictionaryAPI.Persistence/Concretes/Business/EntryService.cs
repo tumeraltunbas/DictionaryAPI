@@ -77,5 +77,26 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.EntryDeleted);
         }
+
+        public Result HideEntry(string entryId)
+        {
+            Entry entry = _entryDal.GetById(Guid.Parse(entryId));
+
+            if(entry == null)
+            {
+                return new ErrorResult(Message.EntryNotFound);
+            }
+
+            if(entry.UserId != Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"])))
+            {
+                return new ErrorResult(Message.UnAuthorized);
+            }
+
+            entry.IsVisible = false;
+            _entryDal.Update(entry);
+
+            return new SuccessResult(Message.EntryHid);
+        }
+
     }
 }

@@ -103,7 +103,7 @@ namespace DictionaryAPI.WebAPI.Controllers
         [HttpPut("password/change")]
         public IActionResult PasswordChange(PasswordChangeDto passwordChangeDto)
         {
-            var result = _userService.PasswordChange(passwordChangeDto, HttpContext.Items);
+            var result = _userService.PasswordChange(passwordChangeDto);
 
             if(result.Success != true)
             {
@@ -118,7 +118,7 @@ namespace DictionaryAPI.WebAPI.Controllers
         [HttpPut("account/deactivate")]
         public IActionResult DeactivateAccount(DeactivateAccountDto deactivateAccountDto)
         {
-            var result = _userService.DeactiveAccount(deactivateAccountDto, HttpContext.Items);
+            var result = _userService.DeactiveAccount(deactivateAccountDto);
 
             if(result.Success != true)
             {

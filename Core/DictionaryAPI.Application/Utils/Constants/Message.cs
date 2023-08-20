@@ -37,5 +37,6 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string EntryNotFound = "Entry not found";
         public static string UnAuthorized = "You can not access this route";
         public static string EntryDeleted = "Entry has been successfully deleted";
+        public static string EntryHid = "Entry has been successfully hid";
     }
 }

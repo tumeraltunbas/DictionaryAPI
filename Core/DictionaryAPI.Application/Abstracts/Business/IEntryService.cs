@@ -12,5 +12,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
     {
         Result CreateEntry(CreateEntryDto createEntryDto, string titleSlug);
         Result DeleteEntry(string entryId);
+        Result HideEntry(string entryId);
     }
 }

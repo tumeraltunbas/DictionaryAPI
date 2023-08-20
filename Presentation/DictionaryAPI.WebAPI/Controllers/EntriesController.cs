@@ -36,10 +36,25 @@ namespace DictionaryAPI.WebAPI.Controllers
 
         [Authorize]
         [RegisterJwtClaimsToItems]
-        [HttpDelete("{entrySlug}/delete")]
-        public IActionResult DeleteEntry(string entrySlug)
+        [HttpDelete("{entryId}/delete")]
+        public IActionResult DeleteEntry(string entryId)
         {
-            var result = _entryService.DeleteEntry(entrySlug);
+            var result = _entryService.DeleteEntry(entryId);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPut("{entryId}/hide")]
+        public IActionResult HideEntry(string entryId)
+        {
+            var result = _entryService.HideEntry(entryId);
 
             if(result.Success != true)
             {
