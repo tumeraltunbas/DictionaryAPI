@@ -63,5 +63,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPut("{entryId}/update")]
+        public IActionResult UpdateEntry(UpdateEntryDto updateEntryDto, string entryId)
+        {
+            var result = _entryService.UpdateEntry(updateEntryDto, entryId);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

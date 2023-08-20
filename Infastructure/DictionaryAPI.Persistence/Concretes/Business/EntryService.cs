@@ -98,5 +98,34 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessResult(Message.EntryHid);
         }
 
+        public Result UpdateEntry(UpdateEntryDto updateEntryDto, string entryId)
+        {
+
+            UpdateEntryDtoValidator validator = new();
+            ValidationResult result = validator.Validate(updateEntryDto);
+
+            if (result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            Entry entry = _entryDal.GetById(Guid.Parse(entryId));
+
+            if (entry == null || entry.IsVisible != true)
+            {
+                return new ErrorResult(Message.EntryNotFound);
+            }
+
+            if (entry.UserId != Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"])))
+            {
+                return new ErrorResult(Message.UnAuthorized);
+            }
+
+            entry.Content = updateEntryDto.Content;
+            _entryDal.Update(entry);
+
+            return new SuccessResult(Message.EntryUpdated);
+
+        }
     }
 }
