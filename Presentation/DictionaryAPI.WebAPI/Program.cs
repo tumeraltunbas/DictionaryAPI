@@ -36,6 +36,7 @@ builder.Services.AddSingleton<ITitleDal, TitleDal>();
 builder.Services.AddSingleton<ITitleService, TitleService>();
 builder.Services.AddSingleton<IEntryDal, EntryDal>();
 builder.Services.AddSingleton<IEntryService, EntryService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 //JWT validation configuration. From Microsoft.AspNetCore.AuthenticationJwtBearer

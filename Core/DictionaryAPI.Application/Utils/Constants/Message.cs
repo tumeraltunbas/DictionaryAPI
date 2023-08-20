@@ -34,5 +34,8 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string AccountDeactivated = "Account has been successfully deactivated";
         public static string ContentNotNull = "Content can not be null";
         public static string EntryCreated = "Entry has been successfully created";
+        public static string EntryNotFound = "Entry not found";
+        public static string UnAuthorized = "You can not access this route";
+        public static string EntryDeleted = "Entry has been successfully deleted";
     }
 }

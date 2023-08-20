@@ -11,5 +11,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
     public interface IEntryService
     {
         Result CreateEntry(CreateEntryDto createEntryDto, IDictionary<object, object> items, string titleSlug);
+        Result DeleteEntry(string entryId);
     }
 }

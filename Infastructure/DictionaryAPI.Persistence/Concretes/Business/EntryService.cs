@@ -6,6 +6,7 @@ using DictionaryAPI.Application.Utils.Constants;
 using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,13 @@ namespace DictionaryAPI.Persistence.Concretes.Business
     {
         ITitleDal _titleDal;
         IEntryDal _entryDal;
+        IHttpContextAccessor _contextAccessor;
 
-        public EntryService(ITitleDal titleDal, IEntryDal entryDal)
+        public EntryService(ITitleDal titleDal, IEntryDal entryDal, IHttpContextAccessor contextAccessor)
         {
             _titleDal = titleDal;
             _entryDal = entryDal;
+            _contextAccessor = contextAccessor;
         }
 
         public Result CreateEntry(CreateEntryDto createEntryDto, IDictionary<object, object> items, string titleSlug)
@@ -54,6 +57,25 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _entryDal.Add(entry);
 
             return new SuccessResult(Message.EntryCreated);    
+        }
+
+        public Result DeleteEntry(string entryId)
+        {
+            Entry entry = _entryDal.GetById(Guid.Parse(entryId));
+
+            if (entry == null)
+            {
+                return new ErrorResult(Message.EntryNotFound);
+            }
+
+            if (entry.UserId != Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"])))
+            {
+                return new ErrorResult(Message.UnAuthorized);
+            }
+
+            _entryDal.Delete(entry);
+
+            return new SuccessResult(Message.EntryDeleted);
         }
     }
 }
