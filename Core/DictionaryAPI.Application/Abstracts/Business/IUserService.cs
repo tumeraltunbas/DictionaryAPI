@@ -16,7 +16,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result VerifyEmail(string url);
         Result ForgotPassword(ForgotPasswordDto forgotPasswordDto);
         Result ResetPassword(ResetPasswordDto resetPasswordDto, string resetPasswordToken);
-        Result PasswordChange(PasswordChangeDto passwordChangeDto, IDictionary<object, object> items);
-        Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto, IDictionary<object, object> items);
+        Result PasswordChange(PasswordChangeDto passwordChangeDto);
+        Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto);
     }
 }

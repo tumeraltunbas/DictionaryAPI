@@ -24,7 +24,7 @@ namespace DictionaryAPI.WebAPI.Controllers
         [HttpPost("{titleSlug}/create")]
         public IActionResult CreateEntry(CreateEntryDto createEntryDto, string titleSlug)
         {
-            var result = _entryService.CreateEntry(createEntryDto, HttpContext.Items, titleSlug);
+            var result = _entryService.CreateEntry(createEntryDto, titleSlug);
 
             if(result.Success != true)
             {

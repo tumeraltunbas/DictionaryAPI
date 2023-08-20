@@ -28,7 +28,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _contextAccessor = contextAccessor;
         }
 
-        public Result CreateEntry(CreateEntryDto createEntryDto, IDictionary<object, object> items, string titleSlug)
+        public Result CreateEntry(CreateEntryDto createEntryDto, string titleSlug)
         {
 
             CreateEntryDtoValidator validator = new();
@@ -51,7 +51,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             Entry entry = new(
                 content: createEntryDto.Content,
                 titleId: title.Id,
-                userId: Guid.Parse(Convert.ToString(items["Id"]))
+                userId: Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
             );
 
             _entryDal.Add(entry);

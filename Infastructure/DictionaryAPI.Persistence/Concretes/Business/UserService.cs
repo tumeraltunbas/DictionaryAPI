@@ -12,6 +12,7 @@ using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 
 namespace DictionaryAPI.Persistence.Concretes.Business
@@ -25,7 +26,8 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         IEmailService _emailService;
         IJwtHelper _jwtHelper;
         DictionaryContext _context;
-        public UserService(IHashHelper hashHelper, IUserDal userDal, IConfiguration configuration, IUtilService utilService, IEmailService emailService, IJwtHelper jwtHelper, DictionaryContext context)
+        IHttpContextAccessor _contextAccesor;
+        public UserService(IHashHelper hashHelper, IUserDal userDal, IConfiguration configuration, IUtilService utilService, IEmailService emailService, IJwtHelper jwtHelper, DictionaryContext context, IHttpContextAccessor contextAccesor)
         {
             _hashHelper = hashHelper;
             _userDal = userDal;
@@ -34,6 +36,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _emailService = emailService;
             _jwtHelper = jwtHelper;
             _context = context;
+            _contextAccesor = contextAccesor;
         }
 
         public Result SignUp(SignUpDto signUpDto)
@@ -221,7 +224,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessResult(Message.PasswordChanged);
         }
 
-        public Result PasswordChange(PasswordChangeDto passwordChangeDto, IDictionary<object, object> items)
+        public Result PasswordChange(PasswordChangeDto passwordChangeDto)
         {
             PasswordChangeDtoValidator validator = new();
             ValidationResult result = validator.Validate(passwordChangeDto);
@@ -236,7 +239,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 return new ErrorResult(Message.PasswordsDoNotMatch);
             }
 
-            User user = _userDal.GetById(Guid.Parse(Convert.ToString(items["Id"])));
+            User user = _userDal.GetById(Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"])));
 
             bool verify = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, passwordChangeDto.OldPassword);
 
@@ -255,7 +258,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessResult(Message.PasswordChanged);
         }
 
-        public Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto, IDictionary<object, object> items)
+        public Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto)
         {
 
             DeactivateAccountDtoValidator validator = new();
@@ -266,7 +269,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
             }
 
-            User user = _userDal.GetById(Guid.Parse(Convert.ToString(items["Id"])));
+            User user = _userDal.GetById(Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"])));
 
             bool verify = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, deactiveAccountDto.Password);
 
