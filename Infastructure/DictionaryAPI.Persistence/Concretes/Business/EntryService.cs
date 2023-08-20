@@ -5,10 +5,12 @@ using DictionaryAPI.Application.DTO.DTOValidators.EntryDTOValidators;
 using DictionaryAPI.Application.Utils.Constants;
 using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
+using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,6 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         ITitleDal _titleDal;
         IEntryDal _entryDal;
         IHttpContextAccessor _contextAccessor;
-
         public EntryService(ITitleDal titleDal, IEntryDal entryDal, IHttpContextAccessor contextAccessor)
         {
             _titleDal = titleDal;
@@ -126,6 +127,16 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.EntryUpdated);
 
+        }
+
+        public DataResult<List<Entry>> GetEntriesByUser()
+        {
+            List<Entry> entries = _entryDal
+                .GetAll(e => e.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"])))
+                .Where(e => e.IsVisible == true)
+                .ToList();
+
+            return new SuccessDataResult<List<Entry>>(entries);
         }
     }
 }

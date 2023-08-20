@@ -1,5 +1,6 @@
 ﻿using DictionaryAPI.Application.DTO.DTOs.EntryDTOs;
 using DictionaryAPI.Application.Utils.Result;
+using DictionaryAPI.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result DeleteEntry(string entryId);
         Result HideEntry(string entryId);
         Result UpdateEntry(UpdateEntryDto updateEntryDto, string entryId);
+        DataResult<List<Entry>> GetEntriesByUser();
     }
 }
