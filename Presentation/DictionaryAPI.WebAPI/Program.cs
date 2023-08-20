@@ -26,16 +26,16 @@ builder.Services.AddSwaggerGen();
 
 //IoC
 builder.Services.AddSingleton<IUserService, UserService>();
-builder.Services.AddSingleton<IUtilService, UtilService>();
 builder.Services.AddSingleton<IUserDal, UserDal>();
+builder.Services.AddSingleton<ITitleService, TitleService>();
+builder.Services.AddSingleton<ITitleDal, TitleDal>();
+builder.Services.AddSingleton<IEntryService, EntryService>();
+builder.Services.AddSingleton<IEntryDal, EntryDal>();
+builder.Services.AddSingleton<IUtilService, UtilService>();
 builder.Services.AddSingleton<IHashHelper, HashHelper>();
 builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddSingleton<DictionaryContext, DictionaryContext>();
 builder.Services.AddSingleton<IJwtHelper, JwtHelper>();
-builder.Services.AddSingleton<ITitleDal, TitleDal>();
-builder.Services.AddSingleton<ITitleService, TitleService>();
-builder.Services.AddSingleton<IEntryDal, EntryDal>();
-builder.Services.AddSingleton<IEntryService, EntryService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
@@ -58,6 +58,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
 
     });
+
+//JSON
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 
 var app = builder.Build();

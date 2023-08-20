@@ -39,5 +39,6 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string EntryDeleted = "Entry has been successfully deleted";
         public static string EntryHid = "Entry has been successfully hid";
         public static string EntryUpdated = "Entry has been successfully updated";
+        public static string TitleNotFound = "Title not found";
     }
 }
