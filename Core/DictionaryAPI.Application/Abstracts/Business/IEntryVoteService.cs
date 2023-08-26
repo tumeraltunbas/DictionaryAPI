@@ -11,5 +11,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
     {
         Result EntryUpVote(string entryId);
         Result EntryDownVote(string entryId);
+        Result UndoVote(string entryId);
+
     }
 }

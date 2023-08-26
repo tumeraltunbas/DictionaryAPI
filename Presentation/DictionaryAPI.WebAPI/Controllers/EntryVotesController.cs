@@ -46,5 +46,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpGet("{entryId}/vote/undo")]
+        public IActionResult UndoVote(string entryId)
+        {
+            var result = _entryVoteService.UndoVote(entryId);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

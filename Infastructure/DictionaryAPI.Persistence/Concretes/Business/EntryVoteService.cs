@@ -78,5 +78,30 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
         }
 
+        public Result UndoVote(string entryId)
+        {
+            Entry entry = _entryDal.GetSingle(e => e.Id == Guid.Parse(entryId));
+
+            if (entry == null)
+            {
+                return new ErrorResult(Message.EntryNotFound);
+            }
+
+            EntryVote vote = _entryVoteDal.GetSingle(
+                ev => ev.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
+                &&
+                ev.EntryId == entry.Id
+            );
+
+            if(vote == null)
+            {
+                return new ErrorResult(Message.VoteNotFound);
+            }
+
+            _entryVoteDal.Delete(vote);
+
+            return new SuccessResult(Message.VoteDeleted);
+
+        }
     }
 }
