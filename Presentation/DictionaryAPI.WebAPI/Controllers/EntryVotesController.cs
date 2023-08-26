@@ -31,5 +31,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpGet("{entryId}/vote/down")]
+        public IActionResult EntryDownVote(string entryId)
+        {
+            var result = _entryVoteService.EntryDownVote(entryId);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

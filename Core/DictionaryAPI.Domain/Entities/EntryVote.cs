@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace DictionaryAPI.Domain.Entities
 {
-    public class EntryVote: BaseEntity, IEntity
+    public class EntryVote: IEntity
     {
         public Guid UserId { get; set; }
         public Guid EntryId { get; set; }
         public VoteType VoteType { get; set; }
         public User User { get; set; }
         public Entry Entry { get; set; }
+        public bool IsVisible { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public EntryVote(Guid userId, Guid entryId, VoteType voteType)
         {

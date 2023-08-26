@@ -10,5 +10,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
     public interface IEntryVoteService
     {
         Result EntryUpVote(string entryId);
+        Result EntryDownVote(string entryId);
     }
 }

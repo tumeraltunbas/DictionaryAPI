@@ -45,5 +45,38 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.VoteCreated);
         }
+        public Result EntryDownVote(string entryId)
+        {
+            Entry entry = _entryDal.GetSingle(e => e.Id == Guid.Parse(entryId));
+
+            if (entry == null)
+            {
+                return new ErrorResult(Message.EntryNotFound);
+            }
+
+            EntryVote upVote = _entryVoteDal.GetSingle(
+                ev => ev.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
+                &&
+                ev.EntryId == entry.Id
+                &&
+                ev.VoteType == VoteType.UpVote
+             ); 
+
+            if(upVote != null)
+            {
+                _entryVoteDal.Delete(upVote);
+            }
+
+            EntryDownVote downVote = new(
+                userId: Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"])),
+                entryId: entry.Id
+            );
+
+            _entryVoteDal.Add(downVote);
+
+            return new SuccessResult(Message.VoteCreated);
+
+        }
+
     }
 }

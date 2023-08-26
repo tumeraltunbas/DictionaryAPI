@@ -66,6 +66,9 @@ namespace DictionaryAPI.Persistence.Contexts
 
             //EntryVotes
             modelBuilder.Entity<EntryVote>()
+                .HasKey(ev => new { ev.UserId, ev.EntryId });
+
+            modelBuilder.Entity<EntryVote>()
                 .HasOne(ev => ev.User)
                 .WithMany(u => u.VotedEntries)
                 .HasForeignKey(ev => ev.UserId)
