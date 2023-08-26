@@ -33,6 +33,8 @@ builder.Services.AddSingleton<IEntryService, EntryService>();
 builder.Services.AddSingleton<IEntryDal, EntryDal>();
 builder.Services.AddSingleton<IEntryFavoriteService, EntryFavoriteService>();
 builder.Services.AddSingleton<IEntryFavoriteDal, EntryFavoriteDal>();
+builder.Services.AddSingleton<IEntryVoteService, EntryVoteService>();
+builder.Services.AddSingleton<IEntryVoteDal, EntryVoteDal>();
 builder.Services.AddSingleton<IUtilService, UtilService>();
 builder.Services.AddSingleton<IHashHelper, HashHelper>();
 builder.Services.AddSingleton<IEmailService, EmailService>();

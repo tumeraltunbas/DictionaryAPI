@@ -16,6 +16,7 @@ namespace DictionaryAPI.Domain.Entities
         public Title Title { get; set; }
        
         public ICollection<EntryFavorite> Favorites { get; set; }
+        public ICollection<EntryVote> Votes { get; set; }
 
         public Entry(string content, Guid userId, Guid titleId)
         {

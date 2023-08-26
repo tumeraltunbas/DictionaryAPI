@@ -64,6 +64,20 @@ namespace DictionaryAPI.Persistence.Contexts
                 .HasForeignKey(ef => ef.EntryId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            //EntryVotes
+            modelBuilder.Entity<EntryVote>()
+                .HasOne(ev => ev.User)
+                .WithMany(u => u.VotedEntries)
+                .HasForeignKey(ev => ev.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<EntryVote>()
+                .HasOne(ev => ev.Entry)
+                .WithMany(e => e.Votes)
+                .HasForeignKey(ev => ev.EntryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -76,6 +90,6 @@ namespace DictionaryAPI.Persistence.Contexts
         public DbSet<Entry> Entries { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<EntryFavorite> EntryFavorites { get; set; }
-
+        public DbSet<EntryVote> EntryVotes { get; set; }
     }
 }

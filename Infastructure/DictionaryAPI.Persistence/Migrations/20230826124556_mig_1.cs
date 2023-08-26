@@ -107,6 +107,34 @@ namespace DictionaryAPI.Persistence.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "EntryVotes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EntryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    VoteType = table.Column<int>(type: "int", nullable: false),
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EntryVotes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EntryVotes_Entries_EntryId",
+                        column: x => x.EntryId,
+                        principalTable: "Entries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EntryVotes_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Entries_TitleId",
                 table: "Entries",
@@ -121,6 +149,16 @@ namespace DictionaryAPI.Persistence.Migrations
                 name: "IX_EntryFavorites_EntryId",
                 table: "EntryFavorites",
                 column: "EntryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EntryVotes_EntryId",
+                table: "EntryVotes",
+                column: "EntryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EntryVotes_UserId",
+                table: "EntryVotes",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Titles_Slug",
@@ -146,6 +184,9 @@ namespace DictionaryAPI.Persistence.Migrations
         {
             migrationBuilder.DropTable(
                 name: "EntryFavorites");
+
+            migrationBuilder.DropTable(
+                name: "EntryVotes");
 
             migrationBuilder.DropTable(
                 name: "Entries");

@@ -42,5 +42,6 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string TitleNotFound = "Title not found";
         public static string FavoriteNotFound = "Favorite not found";
         public static string FavoriteDeleted = "Favorite has been successfully deleted";
+        public static string VoteCreated = "Vote has been successfully created";
     }
 }

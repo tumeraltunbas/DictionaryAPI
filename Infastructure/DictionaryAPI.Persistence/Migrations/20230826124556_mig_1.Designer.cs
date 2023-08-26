@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DictionaryAPI.Persistence.Migrations
 {
     [DbContext(typeof(DictionaryContext))]
-    [Migration("20230826112129_mig_1")]
+    [Migration("20230826124556_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
@@ -75,6 +75,36 @@ namespace DictionaryAPI.Persistence.Migrations
                     b.HasIndex("EntryId");
 
                     b.ToTable("EntryFavorites");
+                });
+
+            modelBuilder.Entity("DictionaryAPI.Domain.Entities.EntryVote", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EntryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("VoteType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EntryVotes");
                 });
 
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.Title", b =>
@@ -214,9 +244,30 @@ namespace DictionaryAPI.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DictionaryAPI.Domain.Entities.EntryVote", b =>
+                {
+                    b.HasOne("DictionaryAPI.Domain.Entities.Entry", "Entry")
+                        .WithMany("Votes")
+                        .HasForeignKey("EntryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DictionaryAPI.Domain.Entities.User", "User")
+                        .WithMany("VotedEntries")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Entry");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.Entry", b =>
                 {
                     b.Navigation("Favorites");
+
+                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.Title", b =>
@@ -229,6 +280,8 @@ namespace DictionaryAPI.Persistence.Migrations
                     b.Navigation("Entries");
 
                     b.Navigation("FavoritedEntries");
+
+                    b.Navigation("VotedEntries");
                 });
 #pragma warning restore 612, 618
         }
