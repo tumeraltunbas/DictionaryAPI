@@ -10,5 +10,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
     public interface IEntryFavoriteService
     {
         Result FavoriteEntry(string entryId);
+        Result UndoFavoriteEntry(string entryId);
     }
 }

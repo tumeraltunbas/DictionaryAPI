@@ -4,6 +4,7 @@ using DictionaryAPI.Application.Utils.Constants;
 using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,31 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _entryFavoriteDal.Add(entryFavorite);
 
             return new SuccessResult();
+        }
+
+        public Result UndoFavoriteEntry(string entryId)
+        {
+            Entry entry = _entryDal.GetSingle(e => e.Id == Guid.Parse(entryId));
+           
+            if (entry == null || entry.IsVisible != true)
+            {
+                return new ErrorResult(Message.EntryNotFound);
+            }
+
+            EntryFavorite favorite = _entryFavoriteDal.GetSingle(
+                ef => ef.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
+                &&
+                ef.EntryId == Guid.Parse(entryId)
+            );
+
+            if(favorite == null)
+            {
+                return new ErrorResult(Message.FavoriteNotFound);
+            }
+
+            _entryFavoriteDal.Delete(favorite);
+
+            return new SuccessResult(Message.FavoriteDeleted);
         }
     }
 }

@@ -30,5 +30,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpGet("{entryId}/unfavorite")]
+        public IActionResult UndoFavoriteEntry(string entryId)
+        {
+            var result = _entryFavoriteDal.UndoFavoriteEntry(entryId);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }
