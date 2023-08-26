@@ -1,4 +1,5 @@
 ﻿using DictionaryAPI.Application.Abstracts.Repository;
+using DictionaryAPI.Domain.Abstract.Entity;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace DictionaryAPI.Persistence.Concretes.Repository
 {
     public class EntityRepositoryBase<T> : IEntityRepositoryBase<T>
-        where T : BaseEntity
+        where T : class, IEntity
         //Generic Type must be instance of BaseEntity and can be created new instance of Generic Type with new()
     {
         public void Add(T entity)
@@ -40,11 +41,11 @@ namespace DictionaryAPI.Persistence.Concretes.Repository
             }
         }
 
-        public T GetById(Guid id)
+        public T GetSingle(Expression<Func<T, bool>> filter)
         {
             using (DictionaryContext context = new())
             {
-                return context.Set<T>().FirstOrDefault(e => e.Id == id);
+                return context.Set<T>().SingleOrDefault(filter);
             }
         }
 

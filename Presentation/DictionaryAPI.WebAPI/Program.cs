@@ -31,6 +31,8 @@ builder.Services.AddSingleton<ITitleService, TitleService>();
 builder.Services.AddSingleton<ITitleDal, TitleDal>();
 builder.Services.AddSingleton<IEntryService, EntryService>();
 builder.Services.AddSingleton<IEntryDal, EntryDal>();
+builder.Services.AddSingleton<IEntryFavoriteService, EntryFavoriteService>();
+builder.Services.AddSingleton<IEntryFavoriteDal, EntryFavoriteDal>();
 builder.Services.AddSingleton<IUtilService, UtilService>();
 builder.Services.AddSingleton<IHashHelper, HashHelper>();
 builder.Services.AddSingleton<IEmailService, EmailService>();

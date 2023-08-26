@@ -239,7 +239,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 return new ErrorResult(Message.PasswordsDoNotMatch);
             }
 
-            User user = _userDal.GetById(Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"])));
+            User user = _userDal.GetSingle(u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"])));
 
             bool verify = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, passwordChangeDto.OldPassword);
 
@@ -269,7 +269,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
             }
 
-            User user = _userDal.GetById(Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"])));
+            User user = _userDal.GetSingle(u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"])));
 
             bool verify = _hashHelper.VerifyPassword(user.PasswordSalt, user.PasswordHash, deactiveAccountDto.Password);
 

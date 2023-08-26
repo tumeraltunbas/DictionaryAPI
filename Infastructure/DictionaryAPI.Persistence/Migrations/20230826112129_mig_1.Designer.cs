@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DictionaryAPI.Persistence.Migrations
 {
     [DbContext(typeof(DictionaryContext))]
-    [Migration("20230804141848_mig_2")]
-    partial class mig_2
+    [Migration("20230826112129_mig_1")]
+    partial class mig_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,28 @@ namespace DictionaryAPI.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Entry");
+                    b.ToTable("Entries");
+                });
+
+            modelBuilder.Entity("DictionaryAPI.Domain.Entities.EntryFavorite", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EntryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
+
+                    b.HasKey("UserId", "EntryId");
+
+                    b.HasIndex("EntryId");
+
+                    b.ToTable("EntryFavorites");
                 });
 
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.Title", b =>
@@ -74,11 +95,14 @@ namespace DictionaryAPI.Persistence.Migrations
 
                     b.Property<string>("Slug")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Title");
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("Titles");
                 });
 
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.User", b =>
@@ -98,7 +122,14 @@ namespace DictionaryAPI.Persistence.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmailVerificationToken")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EmailVerificationTokenExpires")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
@@ -132,9 +163,15 @@ namespace DictionaryAPI.Persistence.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -158,6 +195,30 @@ namespace DictionaryAPI.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DictionaryAPI.Domain.Entities.EntryFavorite", b =>
+                {
+                    b.HasOne("DictionaryAPI.Domain.Entities.Entry", "Entry")
+                        .WithMany("Favorites")
+                        .HasForeignKey("EntryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DictionaryAPI.Domain.Entities.User", "User")
+                        .WithMany("FavoritedEntries")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Entry");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DictionaryAPI.Domain.Entities.Entry", b =>
+                {
+                    b.Navigation("Favorites");
+                });
+
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.Title", b =>
                 {
                     b.Navigation("Entries");
@@ -166,6 +227,8 @@ namespace DictionaryAPI.Persistence.Migrations
             modelBuilder.Entity("DictionaryAPI.Domain.Entities.User", b =>
                 {
                     b.Navigation("Entries");
+
+                    b.Navigation("FavoritedEntries");
                 });
 #pragma warning restore 612, 618
         }

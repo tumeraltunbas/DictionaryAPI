@@ -13,7 +13,7 @@ namespace DictionaryAPI.Application.Abstracts.Repository
         void Update(T entity);
         void Delete(T entity);
         List<T> GetAll(Expression<Func<T, bool>> filter = null);
-        T GetById(Guid id);
+        T GetSingle(Expression<Func<T, bool>> filter);
 
     }
 }

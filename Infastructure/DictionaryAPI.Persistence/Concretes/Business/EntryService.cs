@@ -62,7 +62,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
         public Result DeleteEntry(string entryId)
         {
-            Entry entry = _entryDal.GetById(Guid.Parse(entryId));
+            Entry entry = _entryDal.GetSingle(e => e.Id == Guid.Parse(entryId));
 
             if (entry == null)
             {
@@ -81,9 +81,9 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
         public Result HideEntry(string entryId)
         {
-            Entry entry = _entryDal.GetById(Guid.Parse(entryId));
+            Entry entry = _entryDal.GetSingle(e => e.Id == Guid.Parse(entryId));
 
-            if(entry == null)
+            if (entry == null)
             {
                 return new ErrorResult(Message.EntryNotFound);
             }
@@ -110,7 +110,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
             }
 
-            Entry entry = _entryDal.GetById(Guid.Parse(entryId));
+            Entry entry = _entryDal.GetSingle(e => e.Id == Guid.Parse(entryId));
 
             if (entry == null || entry.IsVisible != true)
             {

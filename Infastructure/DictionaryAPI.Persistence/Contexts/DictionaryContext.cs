@@ -44,6 +44,26 @@ namespace DictionaryAPI.Persistence.Contexts
             modelBuilder.Entity<Title>()
                 .HasIndex(t => t.Slug)
                 .IsUnique();
+
+
+            ////EntryFavorites
+            modelBuilder.Entity<EntryFavorite>() //Two foreign key as a primary key
+                .HasKey(ef => new { ef.UserId, ef.EntryId });
+
+            //User can favorite multiple entry
+            modelBuilder.Entity<EntryFavorite>()
+                .HasOne(ef => ef.User)
+                .WithMany(u => u.FavoritedEntries)
+                .HasForeignKey(ef => ef.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //An entry can be liked by multiple users
+            modelBuilder.Entity<EntryFavorite>()
+                .HasOne(ef => ef.Entry)
+                .WithMany(e => e.Favorites)
+                .HasForeignKey(ef => ef.EntryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -53,6 +73,9 @@ namespace DictionaryAPI.Persistence.Contexts
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Entry> Entries { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<EntryFavorite> EntryFavorites { get; set; }
 
     }
 }

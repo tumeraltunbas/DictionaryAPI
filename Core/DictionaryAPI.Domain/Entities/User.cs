@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DictionaryAPI.Domain.Abstract.Entity;
+using DictionaryAPI.Domain.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,11 +12,8 @@ using System.Threading.Tasks;
 
 namespace DictionaryAPI.Domain.Entities
 {
-    public enum Gender
-    {
 
-    }
-    public class User : BaseEntity
+    public class User : BaseEntity, IEntity
     {
         public string Username { get; set; }
         public string Email { get; set; }
@@ -33,6 +32,8 @@ namespace DictionaryAPI.Domain.Entities
 
 
         public ICollection<Entry> Entries { get; set; }
+
+        public ICollection<EntryFavorite> FavoritedEntries { get; set; }
 
 
         //Constructor
