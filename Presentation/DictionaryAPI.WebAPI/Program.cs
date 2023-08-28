@@ -1,4 +1,4 @@
-using DictionaryAPI.Application.Abstracts.Business;
+﻿using DictionaryAPI.Application.Abstracts.Business;
 using DictionaryAPI.Application.Abstracts.DAL;
 using DictionaryAPI.Application.Abstracts.Security.Hash;
 using DictionaryAPI.Application.Abstracts.Security.JWT;
@@ -43,6 +43,23 @@ builder.Services.AddSingleton<IJwtHelper, JwtHelper>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
+//Cors
+//AddCors servisi, cors politikalarını ayarlamamızı sağlayan bir servis.
+builder.Services.AddCors(options =>
+{
+
+    options.AddDefaultPolicy(policy => {
+
+        policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+
+    });
+
+});
+
+
 //JWT validation configuration. From Microsoft.AspNetCore.AuthenticationJwtBearer
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -78,6 +95,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Cors
+app.UseCors();
 
 app.UseHttpsRedirection();
 
