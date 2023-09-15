@@ -19,6 +19,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result PasswordChange(PasswordChangeDto passwordChangeDto);
         Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto);
         Result GetTwoFactorAuthCredentials();
-        Result EnableTwoFactorAuth(EnableTwoFactorAuthDto enableTwoFactorAuthDto);
+        Result EnableTwoFactorAuth(TwoFactorAuthDto enableTwoFactorAuthDto);
+        Result ValidateTwoFactorAuth(TwoFactorAuthDto validateTwoFactorAuthDto);
     }
 }
