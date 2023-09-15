@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2AhVWgflksWB/hLl8B40ze7j1icRNHHI8xczgF/BbPWFWgqKNNb/RdHYL3FqBau9jeyxGSHTE1MZxuVd1cU0CQ==",
+  "dgSpecHash": "tTU9qLAKmlot6/0qvyNValP6CuRC1lRGHY8q47j6OPo04lE4/gW+R+PI6D1jvO2zQ0cUlBDnubmmOMAgX8GT1w==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Infastructure\\DictionaryAPI.Infastructure.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\googleauthenticator\\3.1.1-beta1\\googleauthenticator.3.1.1-beta1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
@@ -45,6 +46,7 @@
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\qrcoder\\1.4.3\\qrcoder.1.4.3.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\slugify.core\\5.0.0-prerelease.4\\slugify.core.5.0.0-prerelease.4.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

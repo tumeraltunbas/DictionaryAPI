@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NJP+svQSVGTISGVn6uNxCoRIMBu5tsuLjaJHEuL5wYYuu2uGTSsup5iBNkqw5oSXX6K4DvQ9ZG/BbqJ/D0JV/w==",
+  "dgSpecHash": "t550Z/l1KxLZNs4G9/4iG6gVwXYFymIIweoOwVH0lYKCFyyW5y7astx8JQid8RPL20Q/HwlnTOe3om+uwa30jg==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Presentation\\DictionaryAPI.WebAPI\\DictionaryAPI.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\googleauthenticator\\3.1.1-beta1\\googleauthenticator.3.1.1-beta1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
@@ -61,6 +62,7 @@
     "C:\\Users\\tumer\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\qrcoder\\1.4.3\\qrcoder.1.4.3.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\slugify.core\\5.0.0-prerelease.4\\slugify.core.5.0.0-prerelease.4.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",

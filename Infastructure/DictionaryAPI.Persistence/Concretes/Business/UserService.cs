@@ -12,10 +12,12 @@ using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
+using Google.Authenticator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data.Common;
+using System.Text;
 
 namespace DictionaryAPI.Persistence.Concretes.Business
 {
@@ -29,7 +31,16 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         IJwtHelper _jwtHelper;
         DictionaryContext _context;
         IHttpContextAccessor _contextAccesor;
-        public UserService(IHashHelper hashHelper, IUserDal userDal, IConfiguration configuration, IUtilService utilService, IEmailService emailService, IJwtHelper jwtHelper, DictionaryContext context, IHttpContextAccessor contextAccesor)
+        public UserService(
+            IHashHelper hashHelper, 
+            IUserDal userDal, 
+            IConfiguration configuration, 
+            IUtilService utilService, 
+            IEmailService emailService, 
+            IJwtHelper jwtHelper, 
+            DictionaryContext context, 
+            IHttpContextAccessor contextAccesor
+        )
         {
             _hashHelper = hashHelper;
             _userDal = userDal;
@@ -280,6 +291,35 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _userDal.Update(user);
 
             return new SuccessResult(Message.AccountDeactivated);
+        }
+
+        public Result GetTwoFactorAuthCredentials()
+        {
+            User user = _userDal.GetSingle(
+                u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+            );
+
+            if(user.IsTwoFactorAuthEnabled == true)
+            {
+                return new ErrorResult(Message.TwoFactorAuthAlreadyEnabled);
+            }
+
+            if(user.TwoFactorSecretKey == null)
+            {
+                user.TwoFactorSecretKey = Encoding.UTF8.GetBytes(_utilService.GenerateRandomString(40));
+                _userDal.Update(user);
+            }
+
+            TwoFactorAuthenticator twoFactorAuth = new();
+            SetupCode setupCode = twoFactorAuth.GenerateSetupCode(_configuration.GetValue<string>("ProjectName"), user.Email, user.TwoFactorSecretKey);
+
+            var responseData = new
+            {
+                manualEntryKey = setupCode.ManualEntryKey,
+                qrCode = setupCode.QrCodeSetupImageUrl
+            };
+
+            return new SuccessDataResult<object>(responseData);
         }
     }
 }

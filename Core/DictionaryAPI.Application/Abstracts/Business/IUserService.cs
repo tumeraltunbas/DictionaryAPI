@@ -18,5 +18,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result ResetPassword(ResetPasswordDto resetPasswordDto, string resetPasswordToken);
         Result PasswordChange(PasswordChangeDto passwordChangeDto);
         Result DeactiveAccount(DeactivateAccountDto deactiveAccountDto);
+        Result GetTwoFactorAuthCredentials();
     }
 }

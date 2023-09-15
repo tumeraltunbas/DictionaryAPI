@@ -83,6 +83,17 @@
           }
         }
       },
+      "GoogleAuthenticator/3.1.1-beta1": {
+        "dependencies": {
+          "QRCoder": "1.4.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Authenticator.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -495,6 +506,14 @@
           }
         }
       },
+      "QRCoder/1.4.3": {
+        "runtime": {
+          "lib/net6.0/QRCoder.dll": {
+            "assemblyVersion": "1.4.3.0",
+            "fileVersion": "1.4.3.0"
+          }
+        }
+      },
       "Slugify.Core/5.0.0-prerelease.4": {
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -722,6 +741,7 @@
         "dependencies": {
           "DictionaryAPI.Application": "1.0.0",
           "DictionaryAPI.Domain": "1.0.0",
+          "GoogleAuthenticator": "3.1.1-beta1",
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.6.23329.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.6.23329.4",
           "Microsoft.Extensions.Configuration": "8.0.0-preview.6.23329.7",
@@ -774,6 +794,13 @@
       "sha512": "sha512-iWM0LS1MDYX06pcjMEQKqHirl2zkjHlNV23mEJSoR1IZI7KQmTa0RcTtGEJpj5+iHvBCfrzP2mYKM4FtRKVb+A==",
       "path": "fluentvalidation.dependencyinjectionextensions/11.5.1",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512"
+    },
+    "GoogleAuthenticator/3.1.1-beta1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2V9lSQ7nECvUwATwsf3H+6KdCJOEUObWEB+LXEE8J878pdJni+kTwrXuZ+47J/4nUC00o/+jUPrFfdjsfmymVQ==",
+      "path": "googleauthenticator/3.1.1-beta1",
+      "hashPath": "googleauthenticator.3.1.1-beta1.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",
@@ -1026,6 +1053,13 @@
       "sha512": "sha512-hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
+    },
+    "QRCoder/1.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fWuFqjm8GTlEb2GqBl3Hi8HZZeZQwBSHxvRPtPjyNbT82H0ff0JwavKRBmMaXCno1Av6McPC8aJzri0Mj2w9Jw==",
+      "path": "qrcoder/1.4.3",
+      "hashPath": "qrcoder.1.4.3.nupkg.sha512"
     },
     "Slugify.Core/5.0.0-prerelease.4": {
       "type": "package",

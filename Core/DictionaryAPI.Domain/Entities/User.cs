@@ -28,6 +28,8 @@ namespace DictionaryAPI.Domain.Entities
         public DateTime? ResetPasswordTokenExpires { get; set; }
         public string EmailVerificationToken { get; set; }
         public DateTime EmailVerificationTokenExpires { get; set; }
+        public bool IsTwoFactorAuthEnabled { get; set; } = false;
+        public byte[]? TwoFactorSecretKey { get; set; }
         public bool IsEmailVerified { get; set; } = false;
 
 

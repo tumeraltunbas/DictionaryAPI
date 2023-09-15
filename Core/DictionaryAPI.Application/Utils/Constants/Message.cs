@@ -48,5 +48,6 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string DuplicatedUsername = "This username is already in use. Please choose another one.";
         public static string DuplicatedEmail = "This email is already in use. Please choose another one";
         public static string InvalidVoteType = "Invalid Vote Type. Entry votes has two type. These are UpVote and DownVote";
+        public static string TwoFactorAuthAlreadyEnabled = "Two factor authentication is already enabled";
     }
 }

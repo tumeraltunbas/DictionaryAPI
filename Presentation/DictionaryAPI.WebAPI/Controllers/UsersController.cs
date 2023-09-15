@@ -127,5 +127,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpGet("2fa/credentials")]
+        public IActionResult GetTwoFactorAuthCredentials()
+        {
+            var result = _userService.GetTwoFactorAuthCredentials();
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }
