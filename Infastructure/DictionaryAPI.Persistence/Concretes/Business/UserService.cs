@@ -3,6 +3,7 @@ using DictionaryAPI.Application.Abstracts.Business;
 using DictionaryAPI.Application.Abstracts.DAL;
 using DictionaryAPI.Application.Abstracts.Security.Hash;
 using DictionaryAPI.Application.Abstracts.Security.JWT;
+using DictionaryAPI.Application.Abstracts.Security.TwoFactorAuth;
 using DictionaryAPI.Application.Abstracts.Services.EmailService;
 using DictionaryAPI.Application.DTO.DTOs.UserDTOs;
 using DictionaryAPI.Application.DTO.DTOValidators.UserDTOValidators;
@@ -31,15 +32,17 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         IJwtHelper _jwtHelper;
         DictionaryContext _context;
         IHttpContextAccessor _contextAccesor;
+        ITwoFactorAuthHelper _twoFactorAuthHelper;
         public UserService(
-            IHashHelper hashHelper, 
-            IUserDal userDal, 
-            IConfiguration configuration, 
-            IUtilService utilService, 
-            IEmailService emailService, 
-            IJwtHelper jwtHelper, 
-            DictionaryContext context, 
-            IHttpContextAccessor contextAccesor
+            IHashHelper hashHelper,
+            IUserDal userDal,
+            IConfiguration configuration,
+            IUtilService utilService,
+            IEmailService emailService,
+            IJwtHelper jwtHelper,
+            DictionaryContext context,
+            IHttpContextAccessor contextAccesor,
+            ITwoFactorAuthHelper twoFactorAuthHelper
         )
         {
             _hashHelper = hashHelper;
@@ -50,6 +53,7 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _jwtHelper = jwtHelper;
             _context = context;
             _contextAccesor = contextAccesor;
+            _twoFactorAuthHelper = twoFactorAuthHelper;
         }
 
         public Result SignUp(SignUpDto signUpDto)
@@ -320,6 +324,36 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             };
 
             return new SuccessDataResult<object>(responseData);
+        }
+
+        public Result EnableTwoFactorAuth(EnableTwoFactorAuthDto enableTwoFactorAuthDto)
+        {
+
+            EnableTwoFactorAuthDtoValidator validator = new();
+            ValidationResult result = validator.Validate(enableTwoFactorAuthDto);
+
+            if(result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            User user = _userDal.GetSingle(
+                u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+            );
+
+            bool validation = _twoFactorAuthHelper.ValidateAuthCode(user.TwoFactorSecretKey, enableTwoFactorAuthDto.AuthCode);
+
+            if(validation == false)
+            {
+                return new ErrorResult(Message.InvalidAuthCode);
+            }
+
+            user.IsTwoFactorAuthEnabled = true;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.TwoFactorAuthEnabled);
+
         }
     }
 }

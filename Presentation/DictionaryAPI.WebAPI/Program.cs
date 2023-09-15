@@ -2,10 +2,12 @@
 using DictionaryAPI.Application.Abstracts.DAL;
 using DictionaryAPI.Application.Abstracts.Security.Hash;
 using DictionaryAPI.Application.Abstracts.Security.JWT;
+using DictionaryAPI.Application.Abstracts.Security.TwoFactorAuth;
 using DictionaryAPI.Application.Abstracts.Services.EmailService;
 using DictionaryAPI.Application.Utils;
 using DictionaryAPI.Infastructure.Security.Hash;
 using DictionaryAPI.Infastructure.Security.Jwt;
+using DictionaryAPI.Infastructure.Security.TwoFactorAuth;
 using DictionaryAPI.Infastructure.Services.EmailService;
 using DictionaryAPI.Infastructure.Utils;
 using DictionaryAPI.Persistence.Concretes.Business;
@@ -41,6 +43,7 @@ builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddSingleton<DictionaryContext, DictionaryContext>();
 builder.Services.AddSingleton<IJwtHelper, JwtHelper>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSingleton<ITwoFactorAuthHelper, TwoFactorAuthHelper>();
 
 
 //Cors

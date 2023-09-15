@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tTU9qLAKmlot6/0qvyNValP6CuRC1lRGHY8q47j6OPo04lE4/gW+R+PI6D1jvO2zQ0cUlBDnubmmOMAgX8GT1w==",
+  "dgSpecHash": "jgLt6JmCtwhwsfnQqR5WHvt5Ta0F1aiMvRqlbUFjhFSJ+kwK8pqvFFPOk4IEV12SDH0sEN+DpZXCAnptQkZsrw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Infastructure\\DictionaryAPI.Infastructure\\DictionaryAPI.Infastructure.csproj",
   "expectedPackageFiles": [

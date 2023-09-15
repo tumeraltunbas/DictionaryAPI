@@ -3279,6 +3279,7 @@
     "net6.0": [
       "DictionaryAPI.Application >= 1.0.0",
       "DictionaryAPI.Persistence >= 1.0.0",
+      "GoogleAuthenticator >= 3.1.1-beta1",
       "Microsoft.IdentityModel.Tokens >= 6.24.0",
       "System.IdentityModel.Tokens.Jwt >= 6.24.0"
     ]
@@ -3334,6 +3335,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "GoogleAuthenticator": {
+            "target": "Package",
+            "version": "[3.1.1-beta1, )"
+          },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
             "version": "[6.24.0, )"

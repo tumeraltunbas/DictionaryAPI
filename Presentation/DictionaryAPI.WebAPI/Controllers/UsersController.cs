@@ -142,5 +142,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPost("2fa/enable")]
+        public IActionResult EnableTwoFactorAuth(EnableTwoFactorAuthDto enableTwoFactorAuthDto)
+        {
+            var result = _userService.EnableTwoFactorAuth(enableTwoFactorAuthDto);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }
