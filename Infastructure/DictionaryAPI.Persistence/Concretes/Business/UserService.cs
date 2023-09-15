@@ -326,22 +326,19 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessDataResult<object>(responseData);
         }
 
-        public Result EnableTwoFactorAuth(EnableTwoFactorAuthDto enableTwoFactorAuthDto)
+        public Result EnableTwoFactorAuth(TwoFactorAuthDto enableTwoFactorAuthDto)
         {
-
-            EnableTwoFactorAuthDtoValidator validator = new();
-            ValidationResult result = validator.Validate(enableTwoFactorAuthDto);
-
-            if(result.IsValid != true)
-            {
-                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
-            }
 
             User user = _userDal.GetSingle(
                 u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
             );
 
-            bool validation = _twoFactorAuthHelper.ValidateAuthCode(user.TwoFactorSecretKey, enableTwoFactorAuthDto.AuthCode);
+            if (user.IsTwoFactorAuthEnabled == true)
+            {
+                return new ErrorResult(Message.TwoFactorAuthAlreadyEnabled);
+            }
+
+            bool validation = _twoFactorAuthHelper.ValidateAuthCode(user.TwoFactorSecretKey, enableTwoFactorAuthDto);
 
             if(validation == false)
             {
@@ -353,6 +350,20 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _userDal.Update(user);
 
             return new SuccessResult(Message.TwoFactorAuthEnabled);
+
+        }
+
+        public Result ValidateTwoFactorAuth(TwoFactorAuthDto validateTwoFactorAuthDto)
+        {
+
+            bool validation = _twoFactorAuthHelper.ValidateAuthCode(validateTwoFactorAuthDto);
+
+            if (validation == false)
+            {
+                return new ErrorResult(Message.InvalidAuthCode);
+            }
+
+            return new SuccessResult();
 
         }
     }

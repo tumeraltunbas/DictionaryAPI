@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DictionaryAPI.Application.DTO.DTOValidators.UserDTOValidators
 {
-    public class EnableTwoFactorAuthDtoValidator : AbstractValidator<EnableTwoFactorAuthDto>
+    public class TwoFactorAuthDtoValidator : AbstractValidator<TwoFactorAuthDto>
     {
-        public EnableTwoFactorAuthDtoValidator()
+        public TwoFactorAuthDtoValidator()
         {
             RuleFor(e => e.AuthCode).NotNull().WithMessage(Message.AuthCodeNotNull);
         }
