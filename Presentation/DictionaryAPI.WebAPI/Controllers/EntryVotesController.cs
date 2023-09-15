@@ -61,5 +61,21 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpGet("up")]
+        public IActionResult GetUpVotedEntries()
+        {
+            var result = _entryVoteService.GetUpVotedEntries();
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
     }
 }

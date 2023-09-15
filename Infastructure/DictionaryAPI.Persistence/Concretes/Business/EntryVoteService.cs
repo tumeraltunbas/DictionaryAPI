@@ -4,7 +4,9 @@ using DictionaryAPI.Application.Utils.Constants;
 using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Domain.Entities.Enums;
+using DictionaryAPI.Persistence.Contexts;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +21,19 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         IEntryVoteDal _entryVoteDal;
         IEntryDal _entryDal;
         IHttpContextAccessor _contextAccessor;
+        DictionaryContext _context;
 
-        public EntryVoteService(IEntryVoteDal entryVoteDal, IEntryDal entryDal, IHttpContextAccessor contextAccessor)
+        public EntryVoteService(
+            IEntryVoteDal entryVoteDal, 
+            IEntryDal entryDal, 
+            IHttpContextAccessor contextAccessor, 
+            DictionaryContext context
+        )
         {
             _entryVoteDal = entryVoteDal;
             _entryDal = entryDal;
             _contextAccessor = contextAccessor;
+            _context = context;
         }
 
         public Result EntryUpVote(string entryId)
@@ -101,6 +110,21 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _entryVoteDal.Delete(vote);
 
             return new SuccessResult(Message.VoteDeleted);
+
+        }
+
+        public Result GetUpVotedEntries()
+        {
+            List<EntryVote> upVotedEntries = _context.EntryVotes
+                .Include(ev => ev.Entry)
+                .Where(
+                    ev => ev.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
+                    &&
+                    ev.VoteType == VoteType.UpVote
+                )
+                .ToList();
+
+            return new SuccessDataResult<List<EntryVote>>(upVotedEntries);
 
         }
     }
