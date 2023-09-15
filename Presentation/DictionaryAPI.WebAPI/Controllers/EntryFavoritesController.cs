@@ -45,5 +45,20 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpGet("")]
+        public IActionResult GetFavoritedEntries()
+        {
+            var result = _entryFavoriteDal.GetFavoritedEntries();
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

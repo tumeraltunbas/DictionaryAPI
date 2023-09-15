@@ -45,5 +45,7 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string VoteCreated = "Vote has been successfully created";
         public static string VoteNotFound = "Vote not found";
         public static string VoteDeleted = "Vote has been successfully deleted";
+        public static string DuplicatedUsername = "This username is already in use. Please choose another one.";
+        public static string DuplicatedEmail = "This email is already in use. Please choose another one";
     }
 }

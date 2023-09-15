@@ -13,7 +13,9 @@ using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Data.Common;
 
 namespace DictionaryAPI.Persistence.Concretes.Business
 {
@@ -41,20 +43,17 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
         public Result SignUp(SignUpDto signUpDto)
         {
-            SignUpDtoValidator validator = new(); //Creating an instance from DTO Validator class
-            ValidationResult result = validator.Validate(signUpDto); //Validate DTO
+
+            SignUpDtoValidator validator = new();
+            ValidationResult result = validator.Validate(signUpDto);
 
             if (result.IsValid == false)
             {
-                return new ErrorDataResult<List<ValidationFailure>>(result.Errors); //If DTO is not valid, return errors to client
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
             }
 
-            //Unique check will be added.
-
-            //Salt & Hash
             Tuple<byte[], byte[]> hashResult = _hashHelper.GenerateHash(signUpDto.Password);
 
-            //Creating User Instance
             User user = new(
                 username: signUpDto.Username,
                 email: signUpDto.Email,
@@ -63,18 +62,17 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 passwordSalt: hashResult.Item1,
                 passwordHash: hashResult.Item2,
                 emailVerificationToken: _utilService.GenerateRandomString(25),
-                emailVerificationTokenExpires: DateTime.Now.AddHours(_configuration.GetValue<int>("EmailVerificationTokenExpiresInMinutes"))
+                emailVerificationTokenExpires: DateTime.UtcNow.AddHours(_configuration.GetValue<int>("EmailVerificationTokenExpiresInMinutes"))
                 );
 
             _userDal.Add(user);
 
-            //Sending email verification link
             _emailService.SendEmailVerificationLink(user);
 
-            //JWT will be returned
             return new SuccessDataResult<string>(Message.UserCreated, _jwtHelper.GenerateJwt(user));
-
+        
         }
+            
         public Result SignIn(SignInDto signInDto)
         {
             SignInDtoValidator signInValidator = new();

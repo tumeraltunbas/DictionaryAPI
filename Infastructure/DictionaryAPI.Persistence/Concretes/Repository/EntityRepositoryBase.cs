@@ -1,7 +1,10 @@
 ﻿using DictionaryAPI.Application.Abstracts.Repository;
+using DictionaryAPI.Application.Utils.Constants;
+using DictionaryAPI.Application.Utils.Result;
 using DictionaryAPI.Domain.Abstract.Entity;
 using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,7 @@ namespace DictionaryAPI.Persistence.Concretes.Repository
 {
     public class EntityRepositoryBase<T> : IEntityRepositoryBase<T>
         where T : class, IEntity
-        //Generic Type must be instance of BaseEntity and can be created new instance of Generic Type with new()
+
     {
         public void Add(T entity)
         {
@@ -21,7 +24,7 @@ namespace DictionaryAPI.Persistence.Concretes.Repository
             {
                 context.Add(entity);
                 context.SaveChanges();
-            }
+            }       
         }
 
         public void Delete(T entity)

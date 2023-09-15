@@ -11,5 +11,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
     {
         Result FavoriteEntry(string entryId);
         Result UndoFavoriteEntry(string entryId);
+        Result GetFavoritedEntries();
+
     }
 }

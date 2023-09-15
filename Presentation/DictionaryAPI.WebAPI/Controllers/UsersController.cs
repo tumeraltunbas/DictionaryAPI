@@ -24,7 +24,7 @@ namespace DictionaryAPI.WebAPI.Controllers
         public IActionResult SignUp([FromBody] SignUpDto signUpDto)
         {
             var result = _userService.SignUp(signUpDto);
-            
+
             if (result.Success != true)
             {
                 return BadRequest(result);
