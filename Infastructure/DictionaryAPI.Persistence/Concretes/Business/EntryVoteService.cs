@@ -127,5 +127,20 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessDataResult<List<EntryVote>>(upVotedEntries);
 
         }
+
+        public Result GetDownVotedEntries()
+        {
+            List<EntryVote> downVotedEntries = _context.EntryVotes
+                .Include(ev => ev.Entry)
+                .Where(
+                    ev => ev.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
+                    &&
+                    ev.VoteType == VoteType.DownVote
+                )
+                .ToList();
+
+            return new SuccessDataResult<List<EntryVote>>(downVotedEntries);
+
+        }
     }
 }

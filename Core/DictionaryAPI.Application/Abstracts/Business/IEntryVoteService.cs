@@ -13,6 +13,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result EntryDownVote(string entryId);
         Result UndoVote(string entryId);
         Result GetUpVotedEntries();
+        Result GetDownVotedEntries();
 
     }
 }
