@@ -1,4 +1,5 @@
 ﻿using DictionaryAPI.Application.Utils.Result;
+using DictionaryAPI.Domain.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result EntryUpVote(string entryId);
         Result EntryDownVote(string entryId);
         Result UndoVote(string entryId);
-        Result GetUpVotedEntries();
-        Result GetDownVotedEntries();
+        Result GetVotedEntries(string voteType);
 
     }
 }

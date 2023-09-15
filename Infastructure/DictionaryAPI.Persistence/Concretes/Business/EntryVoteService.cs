@@ -113,33 +113,31 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
         }
 
-        public Result GetUpVotedEntries()
+        public Result GetVotedEntries(string voteType)
         {
-            List<EntryVote> upVotedEntries = _context.EntryVotes
+
+            //Check the entered voteType suitable for the enum.
+            var voteTypeValidation = Enum.IsDefined(typeof(VoteType), voteType);
+
+            if(voteTypeValidation == false)
+            {
+                return new ErrorResult(Message.InvalidVoteType);
+            }
+
+            //Enum Parsing
+            VoteType vote;
+            Enum.TryParse(voteType, out vote);
+
+            List<EntryVote> votedEntries = _context.EntryVotes
                 .Include(ev => ev.Entry)
                 .Where(
                     ev => ev.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
                     &&
-                    ev.VoteType == VoteType.UpVote
+                    ev.VoteType == vote
                 )
                 .ToList();
 
-            return new SuccessDataResult<List<EntryVote>>(upVotedEntries);
-
-        }
-
-        public Result GetDownVotedEntries()
-        {
-            List<EntryVote> downVotedEntries = _context.EntryVotes
-                .Include(ev => ev.Entry)
-                .Where(
-                    ev => ev.UserId == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
-                    &&
-                    ev.VoteType == VoteType.DownVote
-                )
-                .ToList();
-
-            return new SuccessDataResult<List<EntryVote>>(downVotedEntries);
+            return new SuccessDataResult<List<EntryVote>>(votedEntries);
 
         }
     }

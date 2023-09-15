@@ -1,4 +1,5 @@
 ﻿using DictionaryAPI.Application.Abstracts.Business;
+using DictionaryAPI.Domain.Entities.Enums;
 using DictionaryAPI.WebAPI.CustomAttributes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -64,25 +65,10 @@ namespace DictionaryAPI.WebAPI.Controllers
 
         [Authorize]
         [RegisterJwtClaimsToItems]
-        [HttpGet("up")]
-        public IActionResult GetUpVotedEntries()
+        [HttpGet("{voteType}")]
+        public IActionResult GetVotedEntries(string voteType)
         {
-            var result = _entryVoteService.GetUpVotedEntries();
-
-            if(result.Success != true)
-            {
-                return BadRequest(result);
-            }
-
-            return Ok(result);
-        }
-
-        [Authorize]
-        [RegisterJwtClaimsToItems]
-        [HttpGet("down")]
-        public IActionResult GetDownVotedEntries()
-        {
-            var result = _entryVoteService.GetDownVotedEntries();
+            var result = _entryVoteService.GetVotedEntries(voteType);
 
             if (result.Success != true)
             {
@@ -91,7 +77,6 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
-
 
     }
 }
