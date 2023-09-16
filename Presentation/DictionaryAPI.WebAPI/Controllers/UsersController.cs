@@ -172,5 +172,21 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPost("2fa/disable")]
+        public IActionResult DisableTwoFactorAuth(TwoFactorAuthDto disableTwoFactorAuth)
+        {
+            var result = _userService.DisableTwoFactorAuth(disableTwoFactorAuth);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+
+        }
     }
 }

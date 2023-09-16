@@ -52,5 +52,7 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string AuthCodeNotNull = "Auth code can not be null";
         public static string InvalidAuthCode = "Auth code is not true";
         public static string TwoFactorAuthEnabled = "Two factor authentication has been successfully enabled";
+        public static string TwoFactorAuthAlreadyDisabled = "Two factor authentication is already disabled";
+        public static string TwoFactorAuthDisabled = "Two factor authentication has been successfully disabled";
     }
 }

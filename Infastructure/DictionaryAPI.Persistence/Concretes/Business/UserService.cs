@@ -366,5 +366,33 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             return new SuccessResult();
 
         }
+
+        public Result DisableTwoFactorAuth(TwoFactorAuthDto disableTwoFactorAuthDto)
+        {
+
+            User user = _userDal.GetSingle(
+                u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+            );      
+
+            if(user.IsTwoFactorAuthEnabled == false)
+            {
+                return new ErrorResult(Message.TwoFactorAuthAlreadyDisabled);
+            }
+
+            bool validation = _twoFactorAuthHelper.ValidateAuthCode(user.TwoFactorSecretKey, disableTwoFactorAuthDto);
+
+            if (validation == false)
+            {
+                return new ErrorResult(Message.InvalidAuthCode);
+            }
+
+            user.IsTwoFactorAuthEnabled = false;
+            user.TwoFactorSecretKey = null;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.TwoFactorAuthDisabled);
+
+        }
     }
 }
