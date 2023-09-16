@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,7 +50,7 @@ namespace DictionaryAPI.Infastructure.Security.TwoFactorAuth
         public bool ValidateAuthCode(byte[] twoFactorSecretKey, TwoFactorAuthDto twoFactorAuthDto)
         {
 
-            if(TwoFactorAuthDtoValidation(twoFactorAuthDto) == false || twoFactorSecretKey == null)
+            if (TwoFactorAuthDtoValidation(twoFactorAuthDto) == false || twoFactorSecretKey == null)
             {
                 return false;
             }

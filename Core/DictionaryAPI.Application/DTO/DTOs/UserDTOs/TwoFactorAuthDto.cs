@@ -9,5 +9,6 @@ namespace DictionaryAPI.Application.DTO.DTOs.UserDTOs
     public class TwoFactorAuthDto
     {
         public string AuthCode { get; set; }
+        public string? Email { get; set; }
     }
 }

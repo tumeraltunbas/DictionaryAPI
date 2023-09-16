@@ -118,7 +118,15 @@ namespace DictionaryAPI.Persistence.Concretes.Business
                 _userDal.Update(user);
             }
 
-            return new SuccessDataResult<string>(_jwtHelper.GenerateJwt(user));
+            if (user.IsTwoFactorAuthEnabled == true)
+            {
+                return new SuccessResult();
+            }
+            else
+            {
+                return new SuccessDataResult<string>(_jwtHelper.GenerateJwt(user));
+            }
+
         }
 
         public Result SendEmailVerificationLink(SendEmailVerificationLinkDto sendEmailVerificationLinkDto)
@@ -356,11 +364,38 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         public Result ValidateTwoFactorAuth(TwoFactorAuthDto validateTwoFactorAuthDto)
         {
 
-            bool validation = _twoFactorAuthHelper.ValidateAuthCode(validateTwoFactorAuthDto);
+            User user;
+
+            if (_contextAccesor.HttpContext.Items["Id"] != null && validateTwoFactorAuthDto.Email == null)
+            {
+                //User from request
+                user = _userDal.GetSingle(
+                        u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+                    );
+            }
+            else
+            {
+                //User from email
+                user = _userDal.GetSingle(
+                        u => u.Email == validateTwoFactorAuthDto.Email
+                    );
+            }
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            bool validation = _twoFactorAuthHelper.ValidateAuthCode(user.TwoFactorSecretKey, validateTwoFactorAuthDto);
 
             if (validation == false)
             {
                 return new ErrorResult(Message.InvalidAuthCode);
+            }
+
+            if (validateTwoFactorAuthDto.Email != null) 
+            {
+                return new SuccessDataResult<string>(_jwtHelper.GenerateJwt(user));
             }
 
             return new SuccessResult();

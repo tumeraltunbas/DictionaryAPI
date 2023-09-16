@@ -14,6 +14,8 @@ namespace DictionaryAPI.Application.DTO.DTOValidators.UserDTOValidators
         public TwoFactorAuthDtoValidator()
         {
             RuleFor(e => e.AuthCode).NotNull().WithMessage(Message.AuthCodeNotNull);
+            
+            RuleFor(e => e.Email).EmailAddress().WithMessage(Message.InvalidEmail);
         }
     }
 }

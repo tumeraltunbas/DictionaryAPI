@@ -158,13 +158,13 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        //[Authorize]
         [RegisterJwtClaimsToItems]
         [HttpPost("2fa/validate")]
         public IActionResult ValidateTwoFactorAuth(TwoFactorAuthDto validateTwoFactorAuth)
         {
             var result = _userService.ValidateTwoFactorAuth(validateTwoFactorAuth);
-
+            Console.WriteLine();
             if (result.Success != true)
             {
                 return BadRequest(result);
