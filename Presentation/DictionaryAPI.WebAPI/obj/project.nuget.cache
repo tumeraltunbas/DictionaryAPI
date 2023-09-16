@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6B7gQoG42I4SDf09Pi6jQwtveJspb0ZtuR/jQ67ynDpBkL43gEMhqJK7Euegv7bFat7/r5NOi4cM+82FTKggVw==",
+  "dgSpecHash": "+Jd7E/bBqQNHO5sMj4Q7eYsPusIBNDdwu0fTujk4nPUR7JQnYiQiL7qHgmZrDKszKx4yGiF6JvYqn3qBm8E/Jw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Presentation\\DictionaryAPI.WebAPI\\DictionaryAPI.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\tumer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\googleauthenticator\\3.1.1-beta1\\googleauthenticator.3.1.1-beta1.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\tumer\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.22\\microsoft.aspnetcore.authentication.google.6.0.22.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\tumer\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

@@ -16,5 +16,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result HideEntry(string entryId);
         Result UpdateEntry(UpdateEntryDto updateEntryDto, string entryId);
         DataResult<List<Entry>> GetEntriesByUser();
+        DataResult<List<Entry>> GetEntriesByTitle(string titleSlug);
     }
 }

@@ -93,5 +93,19 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("{titleSlug}")]
+        public IActionResult GetEntriesByTitle(string titleSlug)
+        {
+            var result = _entryService.GetEntriesByTitle(titleSlug);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
     }
 }

@@ -138,5 +138,13 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessDataResult<List<Entry>>(entries);
         }
+
+        public DataResult<List<Entry>> GetEntriesByTitle(string titleSlug)
+        {
+            Title title = _titleDal.GetSingle(t => t.Slug == titleSlug);
+            List<Entry> entries = _entryDal.GetAll(e => e.TitleId == title.Id);
+
+            return new SuccessDataResult<List<Entry>>(entries);
+        }
     }
 }
