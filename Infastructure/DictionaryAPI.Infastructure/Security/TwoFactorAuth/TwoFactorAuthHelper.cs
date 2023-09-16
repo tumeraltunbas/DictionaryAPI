@@ -6,6 +6,7 @@ using DictionaryAPI.Domain.Entities;
 using FluentValidation.Results;
 using Google.Authenticator;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace DictionaryAPI.Infastructure.Security.TwoFactorAuth
         IHttpContextAccessor _contextAccessor;
         IUserDal _userDal;
 
+        //To be refactored
         public TwoFactorAuthHelper(IHttpContextAccessor contextAccessor, IUserDal userDal)
         {
             _contextAccessor = contextAccessor;
@@ -38,26 +40,28 @@ namespace DictionaryAPI.Infastructure.Security.TwoFactorAuth
             return true;
         }
 
+        private bool VerifyAuthCode(byte[] twoFactorSecretKey, string authCode)
+        {
+            TwoFactorAuthenticator twoFactorAuth = new();
+            return twoFactorAuth.ValidateTwoFactorPIN(twoFactorSecretKey, authCode);
+        }
+
         public bool ValidateAuthCode(byte[] twoFactorSecretKey, TwoFactorAuthDto twoFactorAuthDto)
         {
-            var dtoValidation = TwoFactorAuthDtoValidation(twoFactorAuthDto);
 
-            if(dtoValidation == false)
+            if(TwoFactorAuthDtoValidation(twoFactorAuthDto) == false || twoFactorSecretKey == null)
             {
                 return false;
             }
 
-            TwoFactorAuthenticator twoFactorAuth = new();
-            return twoFactorAuth.ValidateTwoFactorPIN(twoFactorSecretKey, twoFactorAuthDto.AuthCode);
-
+            return VerifyAuthCode(twoFactorSecretKey, twoFactorAuthDto.AuthCode);
 
         }
 
         public bool ValidateAuthCode(TwoFactorAuthDto twoFactorAuthDto)
         {
-            var dtoValidation = TwoFactorAuthDtoValidation(twoFactorAuthDto);
 
-            if (dtoValidation == false)
+            if (TwoFactorAuthDtoValidation(twoFactorAuthDto) == false)
             {
                 return false;
             }
@@ -66,8 +70,7 @@ namespace DictionaryAPI.Infastructure.Security.TwoFactorAuth
                 u => u.Id == Guid.Parse(Convert.ToString(_contextAccessor.HttpContext.Items["Id"]))
             );
 
-            TwoFactorAuthenticator twoFactorAuth = new();
-            return twoFactorAuth.ValidateTwoFactorPIN(user.TwoFactorSecretKey, twoFactorAuthDto.AuthCode);
+            return VerifyAuthCode(user.TwoFactorSecretKey, twoFactorAuthDto.AuthCode);
         }
     }
 }
