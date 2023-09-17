@@ -43,5 +43,17 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessDataResult<Title>(title);
         }
+        public Result GetRandomTitles(int count)
+        {
+            List<Title> titles = _context.Titles
+                                 .Include(t => t.Entries)
+                                 .ThenInclude(e => e.User)
+                                 .OrderBy(t => Guid.NewGuid())
+                                 .Take(count)
+                                 .ToList();
+
+            return new SuccessDataResult<List<Title>>(titles);
+
+        }
     }
 }

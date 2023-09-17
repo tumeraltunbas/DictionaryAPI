@@ -27,5 +27,18 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("random/{titleCount}")]
+        public IActionResult GetRandomTitles(int titleCount)
+        {
+            var result = _titleService.GetRandomTitles(titleCount);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

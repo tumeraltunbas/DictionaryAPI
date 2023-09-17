@@ -10,5 +10,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
     public interface ITitleService
     {
         Result GetTitleBySlug(string slug);
+        Result GetRandomTitles(int count);
     }
 }
