@@ -188,5 +188,18 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
 
         }
+
+        [HttpGet("{username}")]
+        public IActionResult GetProfile(string username)
+        {
+            var result = _userService.GetProfile(username);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
     }
 }

@@ -16,6 +16,7 @@ using FluentValidation.Results;
 using Google.Authenticator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Data.Common;
 using System.Text;
@@ -428,6 +429,37 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.TwoFactorAuthDisabled);
 
+        }
+
+        public Result GetProfile(string username)
+        {
+
+            var user = _context.Users
+                        .Include(u => u.Entries)
+                        .Include(u => u.VotedEntries)
+                        .Include(u => u.FavoritedEntries)
+                        .Select(u => new
+                        {
+                            u.Id,
+                            u.Username,
+                            u.About,
+                            u.Gender,
+                            u.BirthDate,
+                            u.ProfileImageUrl,
+                            u.CreatedAt,
+                            u.Entries,
+                            u.VotedEntries,
+                            u.FavoritedEntries
+                        })
+                        .FirstOrDefault(u => u.Username == username);
+
+            if(user == null)
+            {
+                return new ErrorResult(Message.UserNotFound);
+            }
+
+            return new SuccessDataResult<object>(user);
+                
         }
     }
 }

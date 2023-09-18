@@ -22,5 +22,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result EnableTwoFactorAuth(TwoFactorAuthDto enableTwoFactorAuthDto);
         Result ValidateTwoFactorAuth(TwoFactorAuthDto validateTwoFactorAuthDto);
         Result DisableTwoFactorAuth(TwoFactorAuthDto disableTwoFactorAuthDto);
+        Result GetProfile(string username);
     }
 }
