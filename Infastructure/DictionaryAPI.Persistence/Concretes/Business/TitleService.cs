@@ -33,7 +33,9 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             Title title = _context.Set<Title>()
                                   .Include(t => t.Entries
-                                   .Where(e => e.IsVisible == true))
+                                   .Where(e => e.IsVisible == true)
+                                   .OrderBy(e => e.CreatedAt))
+                                  .ThenInclude(e => e.User)
                                   .FirstOrDefault(t => t.Slug == slug);
 
             if (title == null)
