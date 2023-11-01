@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SsXFY1Q8vIDgn1Wd9NbsvdTVXKJgBMwHEIQIe9vYAIk=",
+  "Hash": "v6CwNpcjS+fpnfPPIFrtRDWpjbIxSg4iRpFGasW0ERM=",
   "Source": "DictionaryAPI.WebAPI",
   "BasePath": "_content/DictionaryAPI.WebAPI",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Presentation\\DictionaryAPI.WebAPI\\wwwroot\\images\\profile-images\\1289286001.jpg",
+      "SourceId": "DictionaryAPI.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Presentation\\DictionaryAPI.WebAPI\\wwwroot\\",
+      "BasePath": "_content/DictionaryAPI.WebAPI",
+      "RelativePath": "images/profile-images/1289286001.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\profile-images\\1289286001.jpg"
+    }
+  ]
 }

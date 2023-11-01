@@ -528,5 +528,26 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.ProfileImageUploaded);
         }
+
+        public Result UpdateAbout(AboutDto aboutDto)
+        {
+            AboutDtoValidator validator = new();
+            ValidationResult result = validator.Validate(aboutDto);
+
+            if (result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+            User user = _userDal.GetSingle(
+                u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+             );
+
+            user.About = aboutDto.About;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.AboutChanged);
+        }
     }
 }

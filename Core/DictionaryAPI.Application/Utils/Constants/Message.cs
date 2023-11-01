@@ -58,6 +58,7 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string EmailSame = "Your email and the email that you want to change are same.";
         public static string ProfileImageUploaded = "Profile image has been successfully updated";
         public static string FileNull = "File can not be null";
-
+        public static string AboutNotNull = "About can not be null";
+        public static string AboutChanged = "About has been successfully changed";
     }
 }

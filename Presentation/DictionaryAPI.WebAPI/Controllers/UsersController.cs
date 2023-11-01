@@ -234,5 +234,20 @@ namespace DictionaryAPI.WebAPI.Controllers
             return Ok(result);
         }
 
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPut("about/update")]
+        public IActionResult UpdateAbout(AboutDto aboutDto)
+        {
+            var result = _userService.UpdateAbout(aboutDto);
+            
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
     }
 }

@@ -26,5 +26,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result GetProfile(string username);
         Result EmailChange(EmailDto emailChangeDto);
         Result UploadProfileImage(IFormFile file);
+        Result UpdateAbout(AboutDto aboutDto);
     }
 }
