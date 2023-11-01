@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Google;
+using DictionaryAPI.Application.Abstracts.Services.StorageService;
+using DictionaryAPI.Infastructure.Services.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +47,7 @@ builder.Services.AddSingleton<DictionaryContext, DictionaryContext>();
 builder.Services.AddSingleton<IJwtHelper, JwtHelper>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<ITwoFactorAuthHelper, TwoFactorAuthHelper>();
+builder.Services.AddSingleton<IStorageService, StorageService>();
 
 
 //Cors
@@ -99,6 +102,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//wwwroot - static files
+app.UseStaticFiles();
 
 //Cors
 app.UseCors();

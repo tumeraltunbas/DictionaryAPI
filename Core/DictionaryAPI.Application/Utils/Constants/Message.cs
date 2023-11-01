@@ -56,5 +56,8 @@ namespace DictionaryAPI.Application.Utils.Constants
         public static string TwoFactorAuthDisabled = "Two factor authentication has been successfully disabled";
         public static string EmailChanged = "Email has been successfully changed and email verification link has been sent to new email";
         public static string EmailSame = "Your email and the email that you want to change are same.";
+        public static string ProfileImageUploaded = "Profile image has been successfully updated";
+        public static string FileNull = "File can not be null";
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DictionaryAPI.Application.DTO.DTOs.UserDTOs;
 using DictionaryAPI.Application.Utils.Result;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result DisableTwoFactorAuth(TwoFactorAuthDto disableTwoFactorAuthDto);
         Result GetProfile(string username);
         Result EmailChange(EmailDto emailChangeDto);
+        Result UploadProfileImage(IFormFile file);
     }
 }

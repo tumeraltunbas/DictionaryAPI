@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "PgUovISp4ZpOoJk+KImuoUhvgqAWtyUNcJOLpMnCbLs=",
+  "Hash": "SsXFY1Q8vIDgn1Wd9NbsvdTVXKJgBMwHEIQIe9vYAIk=",
   "Source": "DictionaryAPI.WebAPI",
   "BasePath": "_content/DictionaryAPI.WebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DictionaryAPI.WebAPI\\wwwroot",
+      "Source": "DictionaryAPI.WebAPI",
+      "ContentRoot": "C:\\Users\\tumer\\Desktop\\Projects\\dotnet-projects\\DictionaryAPI\\Presentation\\DictionaryAPI.WebAPI\\wwwroot\\",
+      "BasePath": "_content/DictionaryAPI.WebAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

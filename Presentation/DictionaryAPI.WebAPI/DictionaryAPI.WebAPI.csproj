@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Infastructure\DictionaryAPI.Persistence\DictionaryAPI.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

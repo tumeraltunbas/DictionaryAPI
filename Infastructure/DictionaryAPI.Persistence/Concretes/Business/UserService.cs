@@ -5,6 +5,7 @@ using DictionaryAPI.Application.Abstracts.Security.Hash;
 using DictionaryAPI.Application.Abstracts.Security.JWT;
 using DictionaryAPI.Application.Abstracts.Security.TwoFactorAuth;
 using DictionaryAPI.Application.Abstracts.Services.EmailService;
+using DictionaryAPI.Application.Abstracts.Services.StorageService;
 using DictionaryAPI.Application.DTO.DTOs.UserDTOs;
 using DictionaryAPI.Application.DTO.DTOValidators.UserDTOValidators;
 using DictionaryAPI.Application.Utils;
@@ -14,6 +15,7 @@ using DictionaryAPI.Domain.Entities;
 using DictionaryAPI.Persistence.Contexts;
 using FluentValidation.Results;
 using Google.Authenticator;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +36,8 @@ namespace DictionaryAPI.Persistence.Concretes.Business
         DictionaryContext _context;
         IHttpContextAccessor _contextAccesor;
         ITwoFactorAuthHelper _twoFactorAuthHelper;
+        IStorageService _storageService;
+        IWebHostEnvironment _hostEnvironment;
         public UserService(
             IHashHelper hashHelper,
             IUserDal userDal,
@@ -43,8 +47,9 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             IJwtHelper jwtHelper,
             DictionaryContext context,
             IHttpContextAccessor contextAccesor,
-            ITwoFactorAuthHelper twoFactorAuthHelper
-        )
+            ITwoFactorAuthHelper twoFactorAuthHelper,
+            IStorageService storageService,
+            IWebHostEnvironment hostEnvironment)
         {
             _hashHelper = hashHelper;
             _userDal = userDal;
@@ -55,6 +60,8 @@ namespace DictionaryAPI.Persistence.Concretes.Business
             _context = context;
             _contextAccesor = contextAccesor;
             _twoFactorAuthHelper = twoFactorAuthHelper;
+            _storageService = storageService;
+            _hostEnvironment = hostEnvironment;
         }
 
         public Result SignUp(SignUpDto signUpDto)
@@ -499,6 +506,27 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessResult(Message.EmailChanged);
 
+        }
+
+        public Result UploadProfileImage(IFormFile file)
+        {
+            if(file == null)
+            {
+                return new ErrorResult(Message.FileNull);
+            }
+
+            User user = _userDal.GetSingle(
+                u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+             );
+
+            string uploadPath = Path.Combine(_hostEnvironment.WebRootPath, "images/profile-images");
+
+            string fileName = _storageService.UploadFile(file, uploadPath);
+
+            user.ProfileImageUrl = fileName;
+            _userDal.Update(user);
+
+            return new SuccessResult(Message.ProfileImageUploaded);
         }
     }
 }

@@ -15,9 +15,11 @@ namespace DictionaryAPI.WebAPI.Controllers
     public class UsersController : ControllerBase
     {
         IUserService _userService;
-        public UsersController(IUserService userService)
+        IWebHostEnvironment _webHostEnvironment;
+        public UsersController(IUserService userService, IWebHostEnvironment webHostEnvironment)
         {
             _userService = userService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpPost("sign/up")]
@@ -216,5 +218,21 @@ namespace DictionaryAPI.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPost("upload/pp")]
+        public IActionResult UploadProfileImage()
+        {
+            var result = _userService.UploadProfileImage(Request.Form.Files[0]);
+
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
     }
 }

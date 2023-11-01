@@ -111,3 +111,4 @@ C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\Dicti
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Google.Authenticator.dll
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\QRCoder.dll
 C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\tumer\Desktop\Projects\dotnet-projects\DictionaryAPI\Presentation\DictionaryAPI.WebAPI\bin\Debug\net6.0\DictionaryAPI.WebAPI.staticwebassets.runtime.json
