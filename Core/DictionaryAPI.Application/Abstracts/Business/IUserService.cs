@@ -12,7 +12,7 @@ namespace DictionaryAPI.Application.Abstracts.Business
     {
         Result SignUp(SignUpDto signUpDto);
         Result SignIn(SignInDto signInDto);
-        Result SendEmailVerificationLink(SendEmailVerificationLinkDto sendEmailVerificationLinkDto);
+        Result SendEmailVerificationLink(EmailDto sendEmailVerificationLinkDto);
         Result VerifyEmail(string url);
         Result ForgotPassword(ForgotPasswordDto forgotPasswordDto);
         Result ResetPassword(ResetPasswordDto resetPasswordDto, string resetPasswordToken);
@@ -23,5 +23,6 @@ namespace DictionaryAPI.Application.Abstracts.Business
         Result ValidateTwoFactorAuth(TwoFactorAuthDto validateTwoFactorAuthDto);
         Result DisableTwoFactorAuth(TwoFactorAuthDto disableTwoFactorAuthDto);
         Result GetProfile(string username);
+        Result EmailChange(EmailDto emailChangeDto);
     }
 }

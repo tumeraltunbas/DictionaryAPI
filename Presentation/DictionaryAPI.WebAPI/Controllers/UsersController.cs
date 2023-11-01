@@ -47,7 +47,7 @@ namespace DictionaryAPI.WebAPI.Controllers
         }
 
         [HttpPost("email/verification/send")]
-        public IActionResult SendEmailVerificationLink([FromBody] SendEmailVerificationLinkDto sendEmailVerificationLinkDto)
+        public IActionResult SendEmailVerificationLink([FromBody] EmailDto sendEmailVerificationLinkDto)
         {
             var result = _userService.SendEmailVerificationLink(sendEmailVerificationLinkDto);
             
@@ -194,6 +194,21 @@ namespace DictionaryAPI.WebAPI.Controllers
         {
             var result = _userService.GetProfile(username);
 
+            if(result.Success != true)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+
+        [Authorize]
+        [RegisterJwtClaimsToItems]
+        [HttpPut("email/change")]
+        public IActionResult EmailChange(EmailDto emailChangeDto)
+        {
+            var result = _userService.EmailChange(emailChangeDto);
+            
             if(result.Success != true)
             {
                 return BadRequest(result);

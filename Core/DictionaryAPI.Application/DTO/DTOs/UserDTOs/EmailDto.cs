@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DictionaryAPI.Application.DTO.DTOs.UserDTOs
 {
-    public class SendEmailVerificationLinkDto
+    public class EmailDto
     {
         public string Email { get; set; }
     }

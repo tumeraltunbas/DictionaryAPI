@@ -37,6 +37,8 @@ namespace DictionaryAPI.Domain.Entities
 
         public ICollection<EntryFavorite> FavoritedEntries { get; set; }
         public ICollection<EntryVote> VotedEntries { get; set; }
+        public ICollection<User> Followers { get; set; }
+        public ICollection<User> Following { get; set; }
 
 
         //Constructor

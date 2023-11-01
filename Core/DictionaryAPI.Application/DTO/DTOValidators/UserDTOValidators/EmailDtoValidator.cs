@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DictionaryAPI.Application.DTO.DTOValidators.UserDTOValidators
 {
-    public class SendEmailVerificationLinkDtoValidator : AbstractValidator<SendEmailVerificationLinkDto>
+    public class EmailDtoValidator : AbstractValidator<EmailDto>
     {
-        public SendEmailVerificationLinkDtoValidator()
+        public EmailDtoValidator()
         {
             RuleFor(s => s.Email).NotNull().WithMessage(Message.EmailNotNull);
             RuleFor(s => s.Email).EmailAddress().WithMessage(Message.InvalidEmail);

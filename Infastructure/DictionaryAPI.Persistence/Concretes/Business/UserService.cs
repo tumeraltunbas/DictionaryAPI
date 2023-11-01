@@ -130,10 +130,10 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
         }
 
-        public Result SendEmailVerificationLink(SendEmailVerificationLinkDto sendEmailVerificationLinkDto)
+        public Result SendEmailVerificationLink(EmailDto sendEmailVerificationLinkDto)
         {
 
-            SendEmailVerificationLinkDtoValidator validator = new();
+            EmailDtoValidator validator = new();
             ValidationResult result = validator.Validate(sendEmailVerificationLinkDto);
 
             if (!result.IsValid)
@@ -460,6 +460,45 @@ namespace DictionaryAPI.Persistence.Concretes.Business
 
             return new SuccessDataResult<object>(user);
                 
+        }
+
+        public Result EmailChange(EmailDto emailChangeDto)
+        {
+
+            EmailDtoValidator validator = new();
+            ValidationResult result = validator.Validate(emailChangeDto);
+
+            if(result.IsValid != true)
+            {
+                return new ErrorDataResult<List<ValidationFailure>>(result.Errors);
+            }
+
+
+            User user = _userDal.GetSingle(
+                u => u.Id == Guid.Parse(Convert.ToString(_contextAccesor.HttpContext.Items["Id"]))
+            );
+
+            //Unique check for email, the application stops.
+
+            if (user.Email == emailChangeDto.Email)
+            {
+                return new ErrorResult(Message.EmailSame);
+            }
+
+            user.Email = emailChangeDto.Email;
+
+            if (user.IsEmailVerified)
+            {
+                user.IsEmailVerified = false;
+            }
+            
+            _userDal.Update(user);
+
+            EmailDto emailDto = new EmailDto { Email = user.Email };
+            SendEmailVerificationLink(emailDto);
+
+            return new SuccessResult(Message.EmailChanged);
+
         }
     }
 }
